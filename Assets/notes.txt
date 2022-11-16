@@ -1,0 +1,12 @@
+starter island:
+- only buy & sell point
+
+desert island:
+- more thirst
+- bit slower growth
+- cut through trees with axe
+
+snow island:
+- slimes begin to spawn (TODO)
+- plants grow much slower
+- water disappears x3 slower

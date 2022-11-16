@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 290575ce72bfb8649a9660c2124e512f, type: 3}
+  m_Name: D_Cactus
+  m_EditorClassIdentifier: 
+  rarity: 0
+  inventorySprite: {fileID: 21300000, guid: d783a92ef0f68b14a8a0551382766d27, type: 3}
+  itemName: Cactus
+  seedLvl: 1
+  value: 45000000
+  prefab: {fileID: 7125543164711043566, guid: e93673dcaaddbed42bd805e618482f76, type: 3}
+  fullyGrownTicksRequired: 2500
+  waterThirst: 4
+  seedClass: {fileID: 11400000, guid: e66be02960e12c1408878eae7b7658e9, type: 2}
