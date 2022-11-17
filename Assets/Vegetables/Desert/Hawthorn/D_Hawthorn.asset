@@ -16,7 +16,7 @@ MonoBehaviour:
   inventorySprite: {fileID: 21300000, guid: d55eb9f7dc0681c4ebc2f0402a148a58, type: 3}
   itemName: Hawthorn
   seedLvl: 1
-  value: 45000000
+  value: aa00000054010000a8020000
   prefab: {fileID: 7125543164711043566, guid: 2961c8195e930ce4e9f53f86818a5f3e, type: 3}
   fullyGrownTicksRequired: 2700
   waterThirst: 4

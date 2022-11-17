@@ -13,6 +13,7 @@ public class QuestArrow : MonoBehaviour
     [SerializeField] Transform t_GrowSlot;
     [SerializeField] Transform t_Sell;
     [SerializeField] Transform t_WaterWell;
+    [SerializeField] Transform t_CactusSeed;
     internal Transform target = null;
     bool isVisible = true;
 
@@ -64,6 +65,9 @@ public class QuestArrow : MonoBehaviour
                 break;
             case quest.CutDownTrees:
                 target = t_Tree;
+                break;
+            case quest.PickupCactusSeed:
+                target = t_CactusSeed;
                 break;
         }
     }

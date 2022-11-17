@@ -16,7 +16,7 @@ MonoBehaviour:
   inventorySprite: {fileID: 21300000, guid: dc3ec39bc4a72db40819a5c13e5bbac4, type: 3}
   itemName: Ice Carrot
   seedLvl: 1
-  value: b8020000
+  value: 1a0000003400000068000000
   prefab: {fileID: 7125543164711043566, guid: 6cf860bdb3b578648b8d618a9c93b18f, type: 3}
   fullyGrownTicksRequired: 6200
   waterThirst: 0.3

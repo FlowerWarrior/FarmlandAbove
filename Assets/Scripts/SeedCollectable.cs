@@ -5,6 +5,9 @@ using UnityEngine;
 public class SeedCollectable : I_Interactable
 {
     [SerializeField] SeedData seed;
+    [SerializeField] int tutorialIndex = 0;
+
+    internal static System.Action<int> SeedPickedUp;
 
     private void Awake()
     {
@@ -15,6 +18,7 @@ public class SeedCollectable : I_Interactable
     {
         InventorySystem.instance.AddItemToInventory(seed);
         SlotsInteractor.instance.SafeRemoveFromSlotsInRange(this);
+        SeedPickedUp?.Invoke(tutorialIndex);
         Destroy(gameObject);
     }
 }

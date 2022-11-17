@@ -16,5 +16,5 @@ MonoBehaviour:
   inventorySprite: {fileID: 21300000, guid: 95ae46de25637b64bbdaf19f79a73ef7, type: 3}
   itemName: Hollyberry
   seedLvl: 1
-  cost: 0
+  cost: 90
   plantClass: {fileID: 11400000, guid: a9bb3559bef7a0c4890ad37926f0d47a, type: 2}

@@ -16,5 +16,5 @@ MonoBehaviour:
   inventorySprite: {fileID: 21300000, guid: 750fdfbe8c4fc5b44b1f38bb591d2cfb, type: 3}
   itemName: Ice Carrot
   seedLvl: 1
-  cost: 0
+  cost: 13
   plantClass: {fileID: 11400000, guid: 2a76543c8e9cd694cbb7de7ba59d165a, type: 2}

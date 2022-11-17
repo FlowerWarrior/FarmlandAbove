@@ -65,7 +65,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHp: 8
   respawnDelay: 5
-  coinsAmount: 10
+  coinsAmount: 5
   myColliders:
   - {fileID: 2947671135545240933}
   - {fileID: 543450653098727775}

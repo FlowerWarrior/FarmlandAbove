@@ -7,7 +7,7 @@ public class AxeScript : MonoBehaviour
     [SerializeField] ToolsUseManager toolsMgr;
     [SerializeField] GameObject axeMesh1;
     [SerializeField] GameObject axeMesh2;
-    [SerializeField] int upgradeAxeAfterTreesCut = 10;
+    [SerializeField] int upgradeAxeAfterTreesCut = 7;
     internal int axePower = 1;
     bool didUpgrade = false;
 

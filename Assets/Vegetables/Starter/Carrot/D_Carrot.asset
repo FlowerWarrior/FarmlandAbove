@@ -16,7 +16,7 @@ MonoBehaviour:
   inventorySprite: {fileID: 21300000, guid: 7353e83d979db5440bb3ed6425949347, type: 3}
   itemName: Carrot
   seedLvl: 1
-  value: 50000000a00000004001000080020000
+  value: 50000000a000000040010000
   prefab: {fileID: 7125543164711043566, guid: 5beb461846b09204cbaa834c7ccd3518, type: 3}
   fullyGrownTicksRequired: 3000
   waterThirst: 1.2

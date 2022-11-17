@@ -16,7 +16,7 @@ MonoBehaviour:
   inventorySprite: {fileID: 21300000, guid: d783a92ef0f68b14a8a0551382766d27, type: 3}
   itemName: Cactus
   seedLvl: 1
-  value: 45000000
+  value: 160000002c00000058000000
   prefab: {fileID: 7125543164711043566, guid: e93673dcaaddbed42bd805e618482f76, type: 3}
   fullyGrownTicksRequired: 2500
   waterThirst: 4

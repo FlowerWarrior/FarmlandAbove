@@ -16,5 +16,5 @@ MonoBehaviour:
   inventorySprite: {fileID: 21300000, guid: 05871548262227949a20e24b3fd38d2c, type: 3}
   itemName: Hawthorn
   seedLvl: 1
-  cost: 1400
+  cost: 85
   plantClass: {fileID: 11400000, guid: 38753a730e91cf04e902eec347d5e090, type: 2}

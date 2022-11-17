@@ -66,6 +66,8 @@ public class QuestMgr : MonoBehaviour
         ZoneTrigger.DiscoveredIsland += (int id) => { if (id == 1) { OverrideCurrentQuest(quest.CutDownTrees); tutorialInProgress = true; }  };
 
         Tree.TreeDestroyed += () => { SetQuestCompleted(quest.CutDownTrees); };
+
+        SeedCollectable.SeedPickedUp += (int id) => { if (id == 0) SetQuestCompleted(quest.PickupCactusSeed); };
     }
 
     private void IncrementBuySeed()
@@ -100,7 +102,7 @@ public class QuestMgr : MonoBehaviour
             WelcomeTxt.instance.ShowTitle("- TUTORIAL COMPLETED-");
             tutorialInProgress = false;
         }
-        else if (currentQuest == completedQuest && completedQuest == quest.CutDownTrees)
+        else if (currentQuest == completedQuest && completedQuest == quest.PickupCactusSeed)
         { 
             OverrideCurrentQuest(quest.None);
             tutorialInProgress = false;
@@ -144,5 +146,6 @@ public enum quest
     SellCrop,
     None,
     CutDownTrees,
+    PickupCactusSeed,
     QuestCompleted,
 }

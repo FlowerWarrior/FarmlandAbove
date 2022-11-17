@@ -66,6 +66,9 @@ public class QuestText : MonoBehaviour
             case quest.CutDownTrees:
                 newText = "Use axe (tool 2) to cut through trees & cactuses";
                 break;
+            case quest.PickupCactusSeed:
+                newText = "Pickup Cactus Seed";
+                break;
             case quest.None:
                 GetComponent<TextMeshProUGUI>().enabled = false;
                 transform.GetChild(0).gameObject.SetActive(false);
