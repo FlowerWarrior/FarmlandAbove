@@ -20,6 +20,7 @@ public class InventorySystem : MonoBehaviour
     public void AddTreeCutCounter()
     {
         treesCut++;
+        TreesCutStatUpdated?.Invoke();
     }
 
     public int GetTreesCut()

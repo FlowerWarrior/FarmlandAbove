@@ -7,6 +7,7 @@ TagManager:
   - Tree
   - GrowSlot
   - Plantable
+  - Slime
   layers:
   - Default
   - TransparentFX
@@ -20,7 +21,7 @@ TagManager:
   - GrowSlot
   - AirRay
   - Goo
-  - 
+  - Zone Trigger
   - 
   - 
   - 

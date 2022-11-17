@@ -270,6 +270,7 @@ public class GrowSlot : I_Interactable
         hpbar.HideHpBar();
         ticksReceived = 0;
         plantProgress = 0f;
+        airBoostLvl = 0;
         isGoo = false;
         gooMesh.SetActive(false);
 

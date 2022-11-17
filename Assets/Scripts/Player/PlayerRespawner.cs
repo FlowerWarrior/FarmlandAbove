@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerRespawner : MonoBehaviour
 {
     [SerializeField] GameObject playerPrefab;
+    [SerializeField] Transform[] respawnPoints;
     [SerializeField] float yLimit;
     [SerializeField] float respawnDelay; 
     internal Rigidbody rb;
@@ -12,6 +13,8 @@ public class PlayerRespawner : MonoBehaviour
     internal GameObject playerInstance;
     internal static PlayerRespawner instance;
     internal static System.Action PlayerFellBelow;
+
+    [HideInInspector] internal int currentIsland = 0;
 
     private void Awake()
     {
@@ -39,7 +42,7 @@ public class PlayerRespawner : MonoBehaviour
     private void SpawnPlayer()
     {
         InputMgr.instance.movementEnabled = true;
-        playerInstance = Instantiate(playerPrefab, transform.position, transform.rotation);
+        playerInstance = Instantiate(playerPrefab, respawnPoints[currentIsland].position, respawnPoints[currentIsland].rotation);
         rb = playerInstance.transform.GetChild(0).gameObject.GetComponent<Rigidbody>();
     }
 
@@ -95,5 +98,14 @@ public class PlayerRespawner : MonoBehaviour
     {
         rb.position = destination.position;
         rb.rotation = destination.rotation;
+    }
+
+    private void OnDrawGizmos()
+    {
+        for (int i = 0; i < respawnPoints.Length; i++)
+        {
+            Gizmos.color = Color.red;
+            Gizmos.DrawWireSphere(respawnPoints[i].position, 0.3f);
+        }
     }
 }

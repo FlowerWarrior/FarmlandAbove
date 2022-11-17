@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 9206383528511858787}
   - component: {fileID: 1908847226}
   - component: {fileID: 1908847224}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Zone Trigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}

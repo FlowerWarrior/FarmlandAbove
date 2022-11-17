@@ -9,6 +9,7 @@ public class AxeScript : MonoBehaviour
     [SerializeField] GameObject axeMesh2;
     [SerializeField] int upgradeAxeAfterTreesCut = 10;
     internal int axePower = 1;
+    bool didUpgrade = false;
 
     private void OnTriggerStay(Collider collider)
     {
@@ -36,9 +37,10 @@ public class AxeScript : MonoBehaviour
             axeMesh1.SetActive(false);
             axeMesh2.SetActive(true);
             axePower = 100;
-            if (InventorySystem.instance.GetTreesCut() == upgradeAxeAfterTreesCut)
+            if (InventorySystem.instance.GetTreesCut() == upgradeAxeAfterTreesCut && !didUpgrade)
             {
                 WelcomeTxt.instance.ShowTitle("Axe upgraded");
+                didUpgrade = true;
             }
         }
         else

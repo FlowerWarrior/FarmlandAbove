@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ZoneTrigger : MonoBehaviour
 {
-    [SerializeField] int islandIndex;
+    [SerializeField] internal int islandIndex;
     internal bool[] discoveredIslands = { true, false, false };
 
     internal static System.Action<int> DiscoveredIsland;
@@ -15,8 +15,14 @@ public class ZoneTrigger : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        if (other.tag == "Slime")
+        {
+            other.gameObject.GetComponent<Slime>().islandIndex = islandIndex;
+        }
+
         if (other.tag == "Player")
         {
+            PlayerRespawner.instance.currentIsland = islandIndex;
             if (discoveredIslands[islandIndex])
                 return;
 

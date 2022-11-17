@@ -9,6 +9,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 543450653098727774, guid: a16b5a9e76eeb3845aed111da2ef190d,
         type: 3}
+      propertyPath: myMeshRender
+      value: 
+      objectReference: {fileID: 8661856712109282380}
+    - target: {fileID: 543450653098727774, guid: a16b5a9e76eeb3845aed111da2ef190d,
+        type: 3}
       propertyPath: myColliders.Array.data[1]
       value: 
       objectReference: {fileID: 8067228310879489459}
@@ -31,7 +36,7 @@ PrefabInstance:
     - target: {fileID: 1435414690278485096, guid: a16b5a9e76eeb3845aed111da2ef190d,
         type: 3}
       propertyPath: m_Name
-      value: Winter Tree Variant
+      value: Winter Tree_1
       objectReference: {fileID: 0}
     - target: {fileID: 2947671135545240933, guid: a16b5a9e76eeb3845aed111da2ef190d,
         type: 3}
@@ -51,38 +56,48 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6434398416080844623, guid: a16b5a9e76eeb3845aed111da2ef190d,
         type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.5996901
+      objectReference: {fileID: 0}
+    - target: {fileID: 6434398416080844623, guid: a16b5a9e76eeb3845aed111da2ef190d,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.59969014
+      objectReference: {fileID: 0}
+    - target: {fileID: 6434398416080844623, guid: a16b5a9e76eeb3845aed111da2ef190d,
+        type: 3}
       propertyPath: m_LocalPosition.x
-      value: -3.0261953
+      value: -0.8258171
       objectReference: {fileID: 0}
     - target: {fileID: 6434398416080844623, guid: a16b5a9e76eeb3845aed111da2ef190d,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.7124958
+      value: 2.549118
       objectReference: {fileID: 0}
     - target: {fileID: 6434398416080844623, guid: a16b5a9e76eeb3845aed111da2ef190d,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.7798338
+      value: -9.329681
       objectReference: {fileID: 0}
     - target: {fileID: 6434398416080844623, guid: a16b5a9e76eeb3845aed111da2ef190d,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.99285364
       objectReference: {fileID: 0}
     - target: {fileID: 6434398416080844623, guid: a16b5a9e76eeb3845aed111da2ef190d,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0.00000074505806
       objectReference: {fileID: 0}
     - target: {fileID: 6434398416080844623, guid: a16b5a9e76eeb3845aed111da2ef190d,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0.11933859
       objectReference: {fileID: 0}
     - target: {fileID: 6434398416080844623, guid: a16b5a9e76eeb3845aed111da2ef190d,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: 0.0000006109476
       objectReference: {fileID: 0}
     - target: {fileID: 6434398416080844623, guid: a16b5a9e76eeb3845aed111da2ef190d,
         type: 3}
@@ -92,7 +107,7 @@ PrefabInstance:
     - target: {fileID: 6434398416080844623, guid: a16b5a9e76eeb3845aed111da2ef190d,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
+      value: -13.708
       objectReference: {fileID: 0}
     - target: {fileID: 6434398416080844623, guid: a16b5a9e76eeb3845aed111da2ef190d,
         type: 3}
@@ -217,3 +232,9 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: -7876388412931919106, guid: b5d1be1818b3f55479f04d73b09b2c42, type: 3}
+--- !u!23 &8661856712109282380 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -7511558181221131132, guid: 6c577626388292d45815cc29cec08fcc,
+    type: 3}
+  m_PrefabInstance: {fileID: 8067228311790143688}
+  m_PrefabAsset: {fileID: 0}

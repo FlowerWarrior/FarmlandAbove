@@ -50,7 +50,7 @@ public class Slime : MonoBehaviour
 
     private IEnumerator GooSpawnLoop()
     {
-        yield return new WaitForSeconds(Random.Range(50, 120));
+        yield return new WaitForSeconds(Random.Range(120, 300));
         Instantiate(gooPrefab, transform.position, transform.rotation);
         StartCoroutine(GooSpawnLoop());
     }

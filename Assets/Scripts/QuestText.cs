@@ -58,7 +58,7 @@ public class QuestText : MonoBehaviour
                 newText = "Water the plant (tool 1)";
                 break;
             case quest.UseSprinkler:
-                newText = "Use sprinkler (tool 3) to make plants grow faster";
+                newText = "Use air blower (tool 3) and hit targets";
                 break;
             case quest.CollectCrop:
                 newText = "Harvest the plant";

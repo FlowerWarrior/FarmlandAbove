@@ -6,8 +6,11 @@ using System.Linq;
 public class SlimesMgr : MonoBehaviour
 {
     [SerializeField] internal Transform[] spawnParents;
-    [SerializeField] List<List<GrowSlot>> targetGrowSlots = new List<List<GrowSlot>>();
-    [SerializeField] List<List<Slime>> activeSlimes = new List<List<Slime>>();
+
+    List<List<GrowSlot>> targetGrowSlots = new List<List<GrowSlot>>();
+    List<List<Slime>> activeSlimes = new List<List<Slime>>();
+    [SerializeField] Slime[] initialWinterSlimes;
+
     [SerializeField] GameObject slimePrefab;
     [SerializeField] GameObject lightningBoltPrefab;
     [SerializeField] internal bool slimeSpawningEnabled = false;
@@ -108,6 +111,11 @@ public class SlimesMgr : MonoBehaviour
         {
             targetGrowSlots.Add(new List<GrowSlot>());
             activeSlimes.Add(new List<Slime>());
+        }
+        for (int j = 0; j < initialWinterSlimes.Length; j++)
+        {
+            // 2 - winter island
+            activeSlimes[2].Add(initialWinterSlimes[j]);
         }
     }
 
