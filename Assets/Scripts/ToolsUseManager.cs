@@ -14,6 +14,10 @@ public class ToolsUseManager : MonoBehaviour
     [SerializeField] AirBlowArea airBlowArea;
     [SerializeField] GameObject blowParticles;
     [SerializeField] Collider airBlowTrigger;
+
+    [SerializeField] MeshRenderer konwekaFilled_MR;
+    [SerializeField] MeshRenderer konwekaEmpty_MR;
+
     Animator _toolAnimator;
 
     Tool currentTool;
@@ -50,6 +54,7 @@ public class ToolsUseManager : MonoBehaviour
     {
         waterLevel = 100f;
         UIMGR.instance.UpdateWaterLevelToolSlider(waterLevel / 100f);
+        UpdateKonwekaMesh();
     }
 
     // Start is called before the first frame update
@@ -60,6 +65,21 @@ public class ToolsUseManager : MonoBehaviour
         currentTool = Tool.None;
         HideAllTools();
         UIMGR.instance.UpdateWaterLevelToolSlider(waterLevel / 100f);
+        UpdateKonwekaMesh();
+    }
+
+    private void UpdateKonwekaMesh()
+    {
+        if (waterLevel > 0f)
+        {
+            konwekaFilled_MR.enabled = true;
+            konwekaEmpty_MR.enabled = false;
+        }
+        else
+        {
+            konwekaFilled_MR.enabled = false;
+            konwekaEmpty_MR.enabled = true;
+        }
     }
 
     private void HideAllTools()
@@ -174,6 +194,7 @@ public class ToolsUseManager : MonoBehaviour
                 AudioMgr.instance.isUsingAirBlow = false;
                 waterLevel -= waterUsageSpeed * Time.deltaTime;
                 UIMGR.instance.UpdateWaterLevelToolSlider(waterLevel / 100f);
+                UpdateKonwekaMesh();
             }
             else if (currentTool == Tool.Axe)
             {

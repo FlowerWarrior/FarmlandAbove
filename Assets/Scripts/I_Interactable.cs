@@ -32,5 +32,6 @@ enum interactablePoint
     BridgeSign,
     GrowSlot,
     WaterRefill,
-    Feces
+    Feces,
+    Seed
 }

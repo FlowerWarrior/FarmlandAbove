@@ -5,11 +5,12 @@ using UnityEngine;
 public class BridgeSign : I_Interactable
 {
     [SerializeField] GameObject bridgeBuilt;
+    [SerializeField] int bridgeIndex;
     [SerializeField] GameObject islandDestination;
     [SerializeField] internal int cost;
 
     internal bool isBuilt = false;
-    internal static System.Action<Vector3> BridgeBuilt;
+    internal static System.Action<Vector3, int> BridgeBuilt;
 
     private void Awake()
     {
@@ -36,7 +37,7 @@ public class BridgeSign : I_Interactable
             isBuilt = this;
             gameObject.SetActive(false);
 
-            BridgeBuilt?.Invoke(transform.position);
+            BridgeBuilt?.Invoke(transform.position, bridgeIndex);
         }
         else
         {

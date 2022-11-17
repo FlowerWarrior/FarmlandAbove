@@ -68,15 +68,14 @@ public class SlimesMgr : MonoBehaviour
             {
                 if (activeSlimes[rndIndexs[i]].Count < maxSlimesPerIsland)
                 {
-                    Vector3 boltPos = GetRandomPointOnIsland(rndIndexs[i], null).position;
-                    GameObject newLightningBolt = Instantiate(lightningBoltPrefab, boltPos, Quaternion.identity);
-                    LightningHit?.Invoke(boltPos);
+                    Vector3 pos = GetRandomPointOnIsland(rndIndexs[i], null).position;
+                    GameObject newLightningBolt = Instantiate(lightningBoltPrefab, pos, Quaternion.identity);
+                    LightningHit?.Invoke(pos);
                     yield return new WaitForSeconds(3);
                     Destroy(newLightningBolt);
 
-                    Vector3 pos = GetRandomPointOnIsland(rndIndexs[i], null).position + Vector3.up * spawnHeight;
                     Quaternion rot = Quaternion.Euler(new Vector3(0, Random.Range(0f, 360f), 0));
-                    Slime newSlime = Instantiate(slimePrefab, pos, rot).GetComponent<Slime>();
+                    Slime newSlime = Instantiate(slimePrefab, pos + Vector3.up*spawnHeight, rot).GetComponent<Slime>();
                     newSlime.islandIndex = rndIndexs[i];
                     activeSlimes[rndIndexs[i]].Add(newSlime);
                     break;

@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class SeedLockPanel : MonoBehaviour
 {
-    [SerializeField] int requiredIslandId;
+    [SerializeField] int requiredBridgeId;
 
     private void OnEnable()
     {
-        if (ZoneTrigger.instance.discoveredIslands[requiredIslandId])
+        if (IslandsMgr.instance.bridgesBuilt[requiredBridgeId])
         {
             gameObject.SetActive(false);
         }

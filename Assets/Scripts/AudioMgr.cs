@@ -226,7 +226,7 @@ public class AudioMgr : MonoBehaviour
         PlayAudioEffect(buy);
     }
 
-    private void PlayBuildBridge(Vector3 location)
+    private void PlayBuildBridge(Vector3 location, int bridgeId)
     {
         PlayAudioAtPoint(buildBridge, location);
     }

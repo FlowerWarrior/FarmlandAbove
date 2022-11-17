@@ -81,6 +81,8 @@ public class InventorySystem : MonoBehaviour
 
             items.Add(veggieInstance);
         }
+
+        ItemCollectedEffectMgr.instance.ShowItem(newItem);
     }
 
     public void SellItem(Item thisItem)
