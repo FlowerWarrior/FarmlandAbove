@@ -69,6 +69,9 @@ public class QuestArrow : MonoBehaviour
             case quest.PickupCactusSeed:
                 target = t_CactusSeed;
                 break;
+            case quest.QuestCompleted:
+                target = null;
+                break;
         }
     }
 

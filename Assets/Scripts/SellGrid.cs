@@ -38,7 +38,11 @@ public class SellGrid : I_ItemsGrid
 
     public void SellAll()
     {
-        InventorySystem.instance.SellAllItems();
-        RefreshItems();
+        if (InventorySystem.instance.GetSellableItems().Length > 0)
+        {
+            InventorySystem.instance.SellAllItems();
+            RefreshItems();
+            UIMGR.instance.CloseAllMenus();
+        }
     }
 }

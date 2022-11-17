@@ -4030,7 +4030,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1716511176}
-  m_RootOrder: 31
+  m_RootOrder: 32
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -23926,7 +23926,7 @@ RectTransform:
   m_Children:
   - {fileID: 1128253818}
   m_Father: {fileID: 1716511176}
-  m_RootOrder: 27
+  m_RootOrder: 28
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -26402,7 +26402,7 @@ RectTransform:
   m_Children:
   - {fileID: 1603195537}
   m_Father: {fileID: 1716511176}
-  m_RootOrder: 26
+  m_RootOrder: 27
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -26810,7 +26810,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1716511176}
-  m_RootOrder: 32
+  m_RootOrder: 33
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
@@ -33329,7 +33329,7 @@ RectTransform:
   - {fileID: 797618203}
   - {fileID: 2028651434}
   m_Father: {fileID: 1716511176}
-  m_RootOrder: 29
+  m_RootOrder: 30
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -36013,6 +36013,7 @@ RectTransform:
   - {fileID: 541864833}
   - {fileID: 234158175}
   - {fileID: 1020696495}
+  - {fileID: 1822315747}
   - {fileID: 1424396298}
   - {fileID: 1332725220}
   - {fileID: 1442540885}
@@ -38351,6 +38352,60 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1821723479}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1822315746
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1822315747}
+  - component: {fileID: 1822315748}
+  m_Layer: 5
+  m_Name: Gems Flying Effect
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1822315747
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1822315746}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1716511176}
+  m_RootOrder: 26
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1822315748
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1822315746}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1fa8afae1ee447e4b878268bb87bf9ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gemPrefab: {fileID: 6373813725219072057, guid: 8a0d157aed372e545a4291e62a3143a6,
+    type: 3}
+  count: 7
+  timeSpacingMin: 0.08
+  timeSpacingMax: 0.12
 --- !u!4 &1825980606 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3944904975175682388, guid: 976961d58cb54be40a601fbb4ce5a5fd,
@@ -40368,7 +40423,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1716511176}
-  m_RootOrder: 30
+  m_RootOrder: 31
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -45662,7 +45717,7 @@ PrefabInstance:
     - target: {fileID: 82561963091160802, guid: 97e41799d6ebf3049adfd92d2cca94b9,
         type: 3}
       propertyPath: m_RootOrder
-      value: 28
+      value: 29
       objectReference: {fileID: 0}
     - target: {fileID: 82561963091160802, guid: 97e41799d6ebf3049adfd92d2cca94b9,
         type: 3}
@@ -45759,8 +45814,7 @@ PrefabInstance:
       propertyPath: m_Name
       value: ItemsCollectedEffectMgr
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 82561963091160815, guid: 97e41799d6ebf3049adfd92d2cca94b9, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 97e41799d6ebf3049adfd92d2cca94b9, type: 3}
 --- !u!222 &326069749058868010
 CanvasRenderer:
