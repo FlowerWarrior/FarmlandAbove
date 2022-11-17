@@ -9,6 +9,7 @@ public class ItemCollected : MonoBehaviour
     [SerializeField] Image itemImage;
     [SerializeField] TextMeshProUGUI itemName;
     [SerializeField] TextMeshProUGUI itemLevel;
+    internal int index = 0;
 
     public void UpdateUI(Item item)
     {
@@ -25,6 +26,7 @@ public class ItemCollected : MonoBehaviour
     private IEnumerator DestroyAfter(float sec)
     {
         yield return new WaitForSeconds(sec);
+        GetComponentInParent<ItemCollectedEffectMgr>().activeItems.Remove(gameObject);
         Destroy(gameObject);
     }
 }
