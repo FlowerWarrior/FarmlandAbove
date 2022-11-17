@@ -14,6 +14,7 @@ public class SlotsInteractor : MonoBehaviour
     [SerializeField] RectTransform panelWaterRefill_RT;
     [SerializeField] RectTransform panelPickupGoo_RT;
     [SerializeField] RectTransform panelUseGoo_RT;
+    [SerializeField] RectTransform panelPickupSeed_RT;
     internal RectTransform currentPanel = null;
 
     [SerializeField] Vector3 offset;
@@ -100,6 +101,7 @@ public class SlotsInteractor : MonoBehaviour
         panelWaterRefill_RT.gameObject.SetActive(false);
         panelPickupGoo_RT.gameObject.SetActive(false);
         panelUseGoo_RT.gameObject.SetActive(false);
+        panelPickupSeed_RT.gameObject.SetActive(false);
 
         if (currentPanel != null)
         {
@@ -294,6 +296,17 @@ public class SlotsInteractor : MonoBehaviour
                         FecesPoint goo = (FecesPoint)closestSlot;
                         goo.SafeDestroy();
                         InventorySystem.instance.AddGooToInv();
+                    }
+                    break;
+
+                // Pickup Goo point
+                case interactablePoint.Seed:
+                    currentPanel = panelPickupSeed_RT;
+                    if (interactAction)
+                    {
+                        // pickup
+                        SeedCollectable collectable = (SeedCollectable)closestSlot;
+                        collectable.PickUp();
                     }
                     break;
             }

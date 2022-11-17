@@ -20,7 +20,7 @@ public class ItemCollected : MonoBehaviour
 
     private void Start()
     {
-        StartCoroutine(DestroyAfter(1f));
+        StartCoroutine(DestroyAfter(1.25f));
     }
 
     private IEnumerator DestroyAfter(float sec)
