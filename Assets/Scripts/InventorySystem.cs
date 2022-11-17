@@ -11,6 +11,7 @@ public class InventorySystem : MonoBehaviour
 
     internal static InventorySystem instance;
     internal static System.Action<int> CoinsUpdated;
+    internal static System.Action<int> GooUpdated;
     internal static System.Action TreesCutStatUpdated;
     internal static System.Action CoinsAdded;
     internal static System.Action ItemSold;
@@ -31,6 +32,7 @@ public class InventorySystem : MonoBehaviour
     public void AddGooToInv()
     {
         goo++;
+        GooUpdated?.Invoke(goo);
     }
 
     public void RemoveGooFromInv()
@@ -38,6 +40,8 @@ public class InventorySystem : MonoBehaviour
         goo--;
         if (goo < 0)
             goo = 0;
+
+        GooUpdated?.Invoke(goo);
     }
 
     public int GetGooCount()

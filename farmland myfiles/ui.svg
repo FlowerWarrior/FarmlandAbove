@@ -9,7 +9,7 @@
    id="svg5"
    inkscape:version="1.2.1 (9c6d41e410, 2022-07-14)"
    sodipodi:docname="ui.svg"
-   inkscape:export-filename="T_Plus.png"
+   inkscape:export-filename="T_GooUI.png"
    inkscape:export-xdpi="96"
    inkscape:export-ydpi="96"
    xml:space="preserve"
@@ -29,8 +29,8 @@
      inkscape:document-units="mm"
      showgrid="false"
      inkscape:zoom="0.59150035"
-     inkscape:cx="-248.52056"
-     inkscape:cy="387.15108"
+     inkscape:cx="240.06748"
+     inkscape:cy="196.11146"
      inkscape:window-width="1920"
      inkscape:window-height="1017"
      inkscape:window-x="-8"
@@ -3145,4 +3145,8 @@
          sodipodi:nodetypes="sssss" /></g><path
        id="rect1704"
        style="fill:#a7ff6e;fill-opacity:1;stroke:#8bcc4f;stroke-width:15.4174;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1;paint-order:markers stroke fill"
-       d="m 63.638214,7.710704 c -5.995368,0 -10.823398,4.82403 -10.823398,10.819398 V 52.816797 H 18.532098 c -5.995367,0 -10.8233903,4.828039 -10.8233903,10.823406 v 8.186258 c 0,5.995367 4.8280233,10.823406 10.8233903,10.823406 h 34.282718 v 34.286703 c 0,5.99536 4.82803,10.81939 10.823398,10.81939 h 8.190243 c 5.995368,0 10.819413,-4.82403 10.819413,-10.81939 V 82.649867 h 34.2867 c 5.99537,0 10.82339,-4.828039 10.82339,-10.823406 v -8.186258 c 0,-5.995367 -4.82802,-10.823406 -10.82339,-10.823406 H 82.64787 V 18.530102 c 0,-5.995368 -4.824045,-10.819398 -10.819413,-10.819398 z" /></g></svg>
+       d="m -336.15881,298.70221 c -5.99536,0 -10.82339,4.82403 -10.82339,10.81939 v 34.2867 h -34.28272 c -5.99537,0 -10.82339,4.82804 -10.82339,10.82341 v 8.18625 c 0,5.99537 4.82802,10.82341 10.82339,10.82341 h 34.28272 v 34.2867 c 0,5.99536 4.82803,10.81939 10.82339,10.81939 h 8.19025 c 5.99536,0 10.81941,-4.82403 10.81941,-10.81939 v -34.2867 h 34.2867 c 5.99537,0 10.82339,-4.82804 10.82339,-10.82341 v -8.18625 c 0,-5.99537 -4.82802,-10.82341 -10.82339,-10.82341 h -34.2867 v -34.2867 c 0,-5.99536 -4.82405,-10.81939 -10.81941,-10.81939 z" /><path
+       id="path2954-3"
+       style="fill:#d367ff;fill-opacity:1;stroke:#e8aeff;stroke-width:8.36403;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1;paint-order:normal"
+       d="m 131.28465,75.239284 c 0,18.793097 -12.95506,29.523466 -50.540778,29.523466 -37.585718,0 -76.56185,-15.734565 -76.56185,-34.527662 0,-18.792417 22.462795,-39.531175 60.048446,-39.531175 37.585722,0 67.054182,25.742953 67.054182,44.535371 z"
+       sodipodi:nodetypes="sssss" /></g></svg>

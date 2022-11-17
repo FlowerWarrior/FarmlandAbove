@@ -17,9 +17,13 @@ public class SlimesMgr : MonoBehaviour
     [SerializeField] float spawnHeight = 3f;
     [SerializeField] int maxSlimesPerIsland = 2;
 
+    [SerializeField] Material skyboxMat;
+
     internal static SlimesMgr instance;
     internal static System.Action<int> SlimeTargetAvailable;
     internal static System.Action<Vector3> LightningHit;
+
+    [SerializeField] bool isThunder = false;
 
     #region Methods
 
@@ -71,7 +75,9 @@ public class SlimesMgr : MonoBehaviour
                     Vector3 pos = GetRandomPointOnIsland(rndIndexs[i], null).position;
                     GameObject newLightningBolt = Instantiate(lightningBoltPrefab, pos, Quaternion.identity);
                     LightningHit?.Invoke(pos);
+                    isThunder = true;
                     yield return new WaitForSeconds(3);
+                    isThunder = false;
                     Destroy(newLightningBolt);
 
                     Quaternion rot = Quaternion.Euler(new Vector3(0, Random.Range(0f, 360f), 0));
@@ -144,6 +150,20 @@ public class SlimesMgr : MonoBehaviour
                 Gizmos.color = Color.magenta;
                 Gizmos.DrawSphere(spawnParents[i].GetChild(j).position, 0.2f);
             }
+        }
+    }
+
+    private void Update()
+    {
+        if (isThunder)
+        {
+            float t = Mathf.Lerp(RenderSettings.skybox.GetFloat("_darknessMultiplier"), 0.3f, 9 * Time.deltaTime);
+            RenderSettings.skybox.SetFloat("_darknessMultiplier", t);
+        }
+        else
+        {
+            float t = Mathf.Lerp(RenderSettings.skybox.GetFloat("_darknessMultiplier"), 1f, 9 * Time.deltaTime);
+            RenderSettings.skybox.SetFloat("_darknessMultiplier", t);
         }
     }
 
