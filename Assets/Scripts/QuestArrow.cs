@@ -48,6 +48,15 @@ public class QuestArrow : MonoBehaviour
             case quest.BuySeed2:
                 target = t_Shop;
                 break;
+            case quest.AgainBuySeed0:
+                target = t_Shop;
+                break;
+            case quest.AgainBuySeed1:
+                target = t_Shop;
+                break;
+            case quest.AgainBuySeed2:
+                target = t_Shop;
+                break;
             case quest.SellCrop:
                 target = t_Sell;
                 break;

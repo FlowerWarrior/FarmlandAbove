@@ -201,6 +201,9 @@ public class SlotsInteractor : MonoBehaviour
                             break;
 
                         case (GrowSlot.PlantState.ReadyForHarvest):
+                            if (QuestMgr.instance.currentQuest < quest.CollectCrop)
+                                break;
+
                             currentPanel = panelHarvest_RT;
                             if (interactAction)
                             {

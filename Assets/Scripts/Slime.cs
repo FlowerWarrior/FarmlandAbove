@@ -88,9 +88,10 @@ public class Slime : MonoBehaviour
     {
         if (target != null)
         {
-            if (target.currentState != GrowSlot.PlantState.Growing)
+            if (target.currentState == GrowSlot.PlantState.Empty)
             {
                 target = null;
+                FindTarget(islandIndex);
                 return;
             }
 

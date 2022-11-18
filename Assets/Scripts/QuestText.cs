@@ -27,6 +27,15 @@ public class QuestText : MonoBehaviour
             case quest.BuySeed2:
                 newText = "Buy beetroot seeds (2/3)";
                 break;
+            case quest.AgainBuySeed0:
+                newText = "Buy more beetroot seeds (0/3)";
+                break;
+            case quest.AgainBuySeed1:
+                newText = "Buy more beetroot seeds (1/3)";
+                break;
+            case quest.AgainBuySeed2:
+                newText = "Buy more beetroot seeds (2/3)";
+                break;
             case quest.CloseShop:
                 newText = "Exit the shop";
                 break;
@@ -46,7 +55,7 @@ public class QuestText : MonoBehaviour
                 newText = "Sell crops at the air balloon";
                 break;
             case quest.PlantSeed:
-                newText = "Plant the seed";
+                newText = "Plant a seed";
                 break;
             case quest.PickPlantBoost:
                 newText = "Pick speed boost for plant";
@@ -60,8 +69,20 @@ public class QuestText : MonoBehaviour
             case quest.UseSprinkler:
                 newText = "Use air blower (tool 3) and hit targets";
                 break;
+            case quest.PlantSeed2:
+                newText = "Plant other seeds (0/2)";
+                break;
+            case quest.PlantSeed3:
+                newText = "Plant other seeds (1/2)";
+                break;
             case quest.CollectCrop:
-                newText = "Harvest the plant";
+                newText = "Harvest plants when ready (0/3)";
+                break;
+            case quest.CollectCrop2:
+                newText = "Harvest plants when ready (1/3)";
+                break;
+            case quest.CollectCrop3:
+                newText = "Harvest plants when ready (2/3)";
                 break;
             case quest.CutDownTrees:
                 newText = "Use axe (tool 2) to cut through trees & cactuses";

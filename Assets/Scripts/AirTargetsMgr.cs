@@ -12,11 +12,14 @@ public class AirTargetsMgr : MonoBehaviour
     float targetChangeTime = 1.4f;
     float timer = 0;
 
+    internal static System.Action FullyChargedO2;
+
     private void Update()
     {
         if (myGrowSlot.airBoostLvl >= 1f)
         {
             isOxygenBarFilled = true;
+            FullyChargedO2?.Invoke();
         }
         else if (myGrowSlot.airBoostLvl < 0.74f)
         {

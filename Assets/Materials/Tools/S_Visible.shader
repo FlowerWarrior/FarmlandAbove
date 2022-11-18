@@ -33,7 +33,7 @@ Shader "Universal Render Pipeline/Custom/Physically Based Example"
         _OcclusionStrength("Strength", Range(0.0, 1.0)) = 1.0
         _OcclusionMap("Occlusion", 2D) = "white" {}
 
-        _EmissionColor("Color", Color) = (0,0,0)
+        [HDR] _EmissionColor("EmissionColor", Color) = (0,0,0)
         _EmissionMap("Emission", 2D) = "white" {}
 
         // Blending state
@@ -72,7 +72,13 @@ Shader "Universal Render Pipeline/Custom/Physically Based Example"
             // that can match multiple render pipelines. If a RenderPipeline tag is not set it will match
             // any render pipeline. In case you want your subshader to only run in LWRP set the tag to
             // "UniversalRenderPipeline"
-            Tags{"RenderType" = "Opaque" "RenderPipeline" = "UniversalRenderPipeline" "IgnoreProjector" = "True"}
+            Tags
+            {
+                "RenderType" = "Opaque" 
+                "RenderPipeline" = "UniversalRenderPipeline" 
+                "UniversalMaterialType" = "Lit" 
+                "IgnoreProjector" = "True"
+            }
             LOD 300
 
             // ------------------------------------------------------------------

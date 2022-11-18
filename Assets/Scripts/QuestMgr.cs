@@ -51,15 +51,17 @@ public class QuestMgr : MonoBehaviour
 
         PlantASeedMiniGame.seedMiniGameOpened += () => { SetQuestCompleted(quest.PlantSeed); };
 
-        PlantASeedMiniGame.PlantASeed += (SeedData a, int b) => { SetQuestCompleted(quest.PickPlantBoost); };
+        PlantASeedMiniGame.PlantASeed += (SeedData a, int b) => { SetQuestCompleted(quest.PickPlantBoost); SetQuestCompleted(quest.PlantSeed3); SetQuestCompleted(quest.PlantSeed2); };
 
         SlotsInteractor.RefillWater += () => { SetQuestCompleted(quest.RefillWaterTool); };
 
         GrowSlot.ReachedPerfectWater += () => { SetQuestCompleted(quest.Water); };
 
+        AirTargetsMgr.FullyChargedO2 += () => { SetQuestCompleted(quest.UseSprinkler); };
+
         GrowSlot.PlantReady += (GrowSlot a, Vector3 b, int c) => { SetQuestCompleted(quest.UseSprinkler); };
 
-        GrowSlot.PlantHarvested += (VegetableData a, SeedData b) => { SetQuestCompleted(quest.CollectCrop); };
+        GrowSlot.PlantHarvested += (VegetableData a, SeedData b) => { SetQuestCompleted(quest.CollectCrop3); SetQuestCompleted(quest.CollectCrop2); SetQuestCompleted(quest.CollectCrop); };
         
         InventorySystem.ItemSold += () => { SetQuestCompleted(quest.SellCrop); };
 
@@ -73,6 +75,12 @@ public class QuestMgr : MonoBehaviour
     private void IncrementBuySeed()
     {
         if (currentQuest <= quest.BuySeed2)
+        {
+            currentQuest++;
+            ShowQuest?.Invoke(currentQuest);
+        }
+
+        if (currentQuest >= quest.AgainBuySeed0 && currentQuest <= quest.AgainBuySeed2)
         {
             currentQuest++;
             ShowQuest?.Invoke(currentQuest);
@@ -93,9 +101,9 @@ public class QuestMgr : MonoBehaviour
 
     IEnumerator ShowCompletedAndStartNext(quest completedQuest)
     {
-        if (!tutorialInProgress) yield break;        
+        if (!tutorialInProgress) yield break;
 
-        if (currentQuest == quest.SellCrop && completedQuest == quest.SellCrop)
+        if (currentQuest == quest.CloseInventory && completedQuest == quest.CloseInventory)
         {
             OverrideCurrentQuest(quest.None);
             UIMGR.instance.CloseAllMenus();
@@ -116,12 +124,12 @@ public class QuestMgr : MonoBehaviour
 
         if (completedQuest == quest.CloseShop ||
             completedQuest == quest.CloseInventory ||
-            completedQuest == quest.Water ||
+            completedQuest == quest.UseSprinkler ||
             completedQuest == quest.SellCrop)
         {
             QuestCompleted?.Invoke();
             ShowQuest?.Invoke(quest.QuestCompleted);
-            yield return new WaitForSeconds(1.4f);
+            yield return new WaitForSeconds(1.2f);
             ShowQuest?.Invoke(currentQuest);
         }
     }
@@ -133,17 +141,24 @@ public enum quest
     BuySeed1,
     BuySeed2,
     CloseShop,
-    OpenInventory,
-    ClickAnySeed,
-    Merge,
-    CloseInventory,
     PlantSeed,
     PickPlantBoost,
     RefillWaterTool,
     Water,
     UseSprinkler,
+    PlantSeed2,
+    PlantSeed3,
     CollectCrop,
+    CollectCrop2,
+    CollectCrop3,
     SellCrop,
+    AgainBuySeed0,
+    AgainBuySeed1,
+    AgainBuySeed2,
+    OpenInventory,
+    ClickAnySeed,
+    Merge,
+    CloseInventory,
     None,
     CutDownTrees,
     PickupCactusSeed,
