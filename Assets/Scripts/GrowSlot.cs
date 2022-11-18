@@ -31,6 +31,8 @@ public class GrowSlot : I_Interactable
     internal bool isGoo = false;
     [SerializeField] GameObject gooMesh;
 
+    [SerializeField] GameObject bushyGrass;
+
     bool isPerfectWatered = false;
     internal float plantWaterLevel = 0; // 0 <-> 100
     internal int hp = 100;
@@ -46,6 +48,7 @@ public class GrowSlot : I_Interactable
     internal static System.Action<GrowSlot, Vector3, int> PlantReady;
     internal static System.Action ReachedPerfectWater;
     internal static System.Action TookDamage;
+    internal static System.Action CutGrass;
 
     internal enum PlantState
     {
@@ -159,10 +162,15 @@ public class GrowSlot : I_Interactable
         multiplier += (plantingBoost / 100f * multiplier);
 
         if (!IsPerfectWatered())
-            multiplier *= 0.2f;
+            multiplier *= 0f;
+
+        if (isBushyGrass)
+            multiplier *= 0f;
 
         if (IsAirBoostActive())
             multiplier *= 3f;
+        else
+            multiplier *= 0f;
 
         return multiplier;
     }
@@ -273,9 +281,10 @@ public class GrowSlot : I_Interactable
         airBoostLvl = 0;
         isGoo = false;
         gooMesh.SetActive(false);
+        bushyGrass.SetActive(false);
 
         // Destroy childs with exceptions
-        for (int i = 5; i < transform.childCount; i++)
+        for (int i = 6; i < transform.childCount; i++)
         {
             Destroy(transform.GetChild(i).gameObject);
         }
@@ -299,6 +308,22 @@ public class GrowSlot : I_Interactable
         areStatsUIShown = false;
     }
 
+    private void ToggleBushyGrass(bool state)
+    {
+        isBushyGrass = state;
+        bushyGrass.SetActive(state);
+        if (!state)
+        {
+            bushyGrassTimeDelay = Random.Range(30f, 300f);
+        }
+    }
+
+    public void CutBushyGrass()
+    {
+        ToggleBushyGrass(false);
+        CutGrass?.Invoke();
+    }
+
     #endregion
 
     #region MonoBehaviour Callbacks
@@ -310,6 +335,8 @@ public class GrowSlot : I_Interactable
         myHabitat = GetComponentInParent<PlantHabitat>();
         if (!isGoo)
             gooMesh.SetActive(false);
+
+        ToggleBushyGrass(false);
     }
 
     private void OnEnable()
@@ -328,6 +355,8 @@ public class GrowSlot : I_Interactable
         Gizmos.DrawWireSphere(transform.position, 0.2f);
     }
 
+    internal bool isBushyGrass = false;
+    float bushyGrassTimeDelay, bushyGrassTimer = 0;
     private void Update()
     {
         if (isGoo)
@@ -347,6 +376,16 @@ public class GrowSlot : I_Interactable
         }
 
         airBoostLvl = Mathf.Clamp(airBoostLvl, 0, 1);
+
+        if (currentState == PlantState.Growing && !isGoo)
+        {
+            bushyGrassTimer += Time.deltaTime;
+            if (bushyGrassTimer >= bushyGrassTimeDelay)
+            {
+                bushyGrassTimer = 0;
+                ToggleBushyGrass(true);
+            }
+        }
     }
 
     private void FixedUpdate() // Order of Exec 1

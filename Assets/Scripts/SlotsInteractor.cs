@@ -15,6 +15,7 @@ public class SlotsInteractor : MonoBehaviour
     [SerializeField] RectTransform panelPickupGoo_RT;
     [SerializeField] RectTransform panelUseGoo_RT;
     [SerializeField] RectTransform panelPickupSeed_RT;
+    [SerializeField] RectTransform panelCutGrass_RT;
     internal RectTransform currentPanel = null;
 
     [SerializeField] Vector3 offset;
@@ -25,7 +26,7 @@ public class SlotsInteractor : MonoBehaviour
     I_Interactable closestSlot = null;
 
     public static System.Action<float, string, int, int, bool, int, bool, float, bool> UpdateGrowStats; // waterLevel, name, lvl
-    internal static System.Action Interact;
+    internal static System.Action InteractMenu;
     internal static System.Action RefillWater;
 
     #region Methods
@@ -89,7 +90,7 @@ public class SlotsInteractor : MonoBehaviour
         }
     }
 
-    private void UpdateInteractUIPanels()
+    private void UpdateInteractMenuUIPanels()
     {
         panelPlantSeed_RT.gameObject.SetActive(false);
         panelHarvest_RT.gameObject.SetActive(false);
@@ -102,6 +103,7 @@ public class SlotsInteractor : MonoBehaviour
         panelPickupGoo_RT.gameObject.SetActive(false);
         panelUseGoo_RT.gameObject.SetActive(false);
         panelPickupSeed_RT.gameObject.SetActive(false);
+        panelCutGrass_RT.gameObject.SetActive(false);
 
         if (currentPanel != null)
         {
@@ -152,10 +154,10 @@ public class SlotsInteractor : MonoBehaviour
         return false;
     }
 
-    private void HandleInteractions()
+    private void HandleInteractMenuions()
     {
         // Inputs
-        bool interactAction = Input.GetButtonDown("Interact") && canInteract && IsCurrentPanelOnScreen();
+        bool InteractMenuAction = Input.GetButtonDown("Interact") && canInteract && IsCurrentPanelOnScreen();
 
         if (closestSlot != null)
         {
@@ -168,8 +170,18 @@ public class SlotsInteractor : MonoBehaviour
                         currentPanel = null;
                         break;
                     }
-
                     GrowSlot growSlotInstance = (GrowSlot)closestSlot;
+
+                    if (growSlotInstance.isBushyGrass)
+                    {
+                        currentPanel = panelCutGrass_RT;
+                        if (InteractMenuAction)
+                        {
+                            growSlotInstance.CutBushyGrass();
+                        }
+                        break;
+                    }
+
                     switch (growSlotInstance.currentState)
                     {
                         case (GrowSlot.PlantState.Empty):
@@ -182,21 +194,21 @@ public class SlotsInteractor : MonoBehaviour
                             if (InventorySystem.instance.GetGooCount() > 0 && !growSlotInstance.isGoo)
                             {
                                 currentPanel = panelUseGoo_RT;
-                                if (interactAction)
+                                if (InteractMenuAction)
                                 {
                                     // use goo
                                     growSlotInstance.EnableGoo();
                                     InventorySystem.instance.RemoveGooFromInv();
-                                    Interact?.Invoke();
+                                    InteractMenu?.Invoke();
                                 }
                             }
                             else
                             {
                                 currentPanel = panelPlantSeed_RT;
-                                if (interactAction)
+                                if (InteractMenuAction)
                                 {
                                     UIMGR.instance.OpenSeedSelector(growSlotInstance.GetAcceptableSeeds());
-                                    Interact?.Invoke();
+                                    InteractMenu?.Invoke();
                                 }
                             }
                             break;
@@ -211,10 +223,10 @@ public class SlotsInteractor : MonoBehaviour
                                 break;
 
                             currentPanel = panelHarvest_RT;
-                            if (interactAction)
+                            if (InteractMenuAction)
                             {
                                 growSlotInstance.Harvest();
-                                Interact?.Invoke();
+                                InteractMenu?.Invoke();
                             }
                             break;
                     }
@@ -229,10 +241,10 @@ public class SlotsInteractor : MonoBehaviour
                     } 
 
                     currentPanel = panelSell_RT;
-                    if (interactAction)
+                    if (InteractMenuAction)
                     {
                         UIMGR.instance.OpenSellMenu();
-                        Interact?.Invoke();
+                        InteractMenu?.Invoke();
                     }
                     break;
 
@@ -240,10 +252,10 @@ public class SlotsInteractor : MonoBehaviour
                 case interactablePoint.Shop:
 
                     currentPanel = panelShop_RT;
-                    if (interactAction)
+                    if (InteractMenuAction)
                     {
                         UIMGR.instance.OpenSeedShopMenu((SeedShopPoint)closestSlot);
-                        Interact?.Invoke();
+                        InteractMenu?.Invoke();
                     }
                     break;
 
@@ -256,11 +268,11 @@ public class SlotsInteractor : MonoBehaviour
                     }
 
                     currentPanel = panelBridge_RT;
-                    if (interactAction)
+                    if (InteractMenuAction)
                     {
                         BridgeSign bridgeSign = (BridgeSign)closestSlot;
                         bridgeSign.BuyBridge();
-                        Interact?.Invoke();
+                        InteractMenu?.Invoke();
                     }
                     break;
 
@@ -273,11 +285,11 @@ public class SlotsInteractor : MonoBehaviour
                     }
 
                     currentPanel = panelUpgrades_RT;
-                    if (interactAction)
+                    if (InteractMenuAction)
                     {
                         UpgradesPoint upgradesPoint = (UpgradesPoint)closestSlot;
                         UIMGR.instance.OpenUpgradesMenu(upgradesPoint.plantsHabitat);
-                        Interact?.Invoke();
+                        InteractMenu?.Invoke();
                     }
                     break;
 
@@ -290,7 +302,7 @@ public class SlotsInteractor : MonoBehaviour
                     }
 
                     currentPanel = panelWaterRefill_RT;
-                    if (interactAction)
+                    if (InteractMenuAction)
                     {
                         RefillWater?.Invoke();
                     }
@@ -299,7 +311,7 @@ public class SlotsInteractor : MonoBehaviour
                 // Pickup Goo point
                 case interactablePoint.Feces:
                     currentPanel = panelPickupGoo_RT;
-                    if (interactAction)
+                    if (InteractMenuAction)
                     {
                         // pickup goo
                         FecesPoint goo = (FecesPoint)closestSlot;
@@ -311,7 +323,7 @@ public class SlotsInteractor : MonoBehaviour
                 // Pickup Goo point
                 case interactablePoint.Seed:
                     currentPanel = panelPickupSeed_RT;
-                    if (interactAction)
+                    if (InteractMenuAction)
                     {
                         // pickup
                         SeedCollectable collectable = (SeedCollectable)closestSlot;
@@ -325,7 +337,7 @@ public class SlotsInteractor : MonoBehaviour
             currentPanel = null;
         }
 
-        UpdateInteractUIPanels();
+        UpdateInteractMenuUIPanels();
     }
 
     private void SendPlantRequestToSlot(SeedData seed, int plantingBoostValue)
@@ -376,7 +388,7 @@ public class SlotsInteractor : MonoBehaviour
     private void Update()
     {
         SetClosestSlotInRange();
-        HandleInteractions();
+        HandleInteractMenuions();
     }
 
     #endregion

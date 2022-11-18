@@ -103,13 +103,6 @@ public class QuestMgr : MonoBehaviour
     {
         if (!tutorialInProgress) yield break;
 
-        if (currentQuest == quest.CloseInventory && completedQuest == quest.CloseInventory)
-        {
-            OverrideCurrentQuest(quest.None);
-            UIMGR.instance.CloseAllMenus();
-            WelcomeTxt.instance.ShowTitle("- TUTORIAL COMPLETED-");
-            tutorialInProgress = false;
-        }
         else if (currentQuest == completedQuest && completedQuest == quest.PickupCactusSeed)
         { 
             OverrideCurrentQuest(quest.None);
@@ -122,7 +115,14 @@ public class QuestMgr : MonoBehaviour
             ShowQuest?.Invoke(currentQuest);
         }
 
-        if (completedQuest == quest.CloseShop ||
+        if (currentQuest == quest.CloseInventory && completedQuest == quest.CloseInventory)
+        {
+            OverrideCurrentQuest(quest.None);
+            UIMGR.instance.CloseAllMenus();
+            WelcomeTxt.instance.ShowTitle("- TUTORIAL COMPLETED-");
+            tutorialInProgress = false;
+        }
+        else if (completedQuest == quest.CloseShop ||
             completedQuest == quest.CloseInventory ||
             completedQuest == quest.UseSprinkler ||
             completedQuest == quest.SellCrop)

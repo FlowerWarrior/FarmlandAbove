@@ -53,6 +53,7 @@ public class AudioMgr : MonoBehaviour
     [SerializeField] AudioClip playerGroundHit;
     [SerializeField] AudioClip lightningSpawn;
     [SerializeField] AudioClip shieldDestroyed;
+    [SerializeField] AudioClip cutGrass;
 
     float slimeHitDelay = 0.3f;
     float slimeHitTimer = 0f;
@@ -131,7 +132,7 @@ public class AudioMgr : MonoBehaviour
         ToolsUseManager.AxeHit += PlayAxeHit;
         SeedReceivedMgr.ItemShowReceived += PlayItemReceived;
         InventorySystem.CoinsAdded += PlayCoinsAdded;
-        SlotsInteractor.Interact += PlayInteract;
+        SlotsInteractor.InteractMenu += PlayInteract;
         PlantASeedMiniGame.IndicatorStopped += PlayMiniGameIndicatorStopped;
         ButtonEffects.ButtonClicked += PlayClick;
         ToolsUseManager.AxeUsed += PlayAxeSwoosh;
@@ -151,6 +152,7 @@ public class AudioMgr : MonoBehaviour
         PlayerGroundedState.HitGround += PlayPlayerHitGround;
         SlimesMgr.LightningHit += PlayLightningSpawnSlime;
         PlantHabitat.ShieldDestroyed += PlayShieldDestroyed;
+        GrowSlot.CutGrass += PlayCutGrass;
     }
 
     private void PlayAudioAtPoint(AudioClip clip, Vector3 location)
@@ -348,5 +350,10 @@ public class AudioMgr : MonoBehaviour
     private void PlayShieldDestroyed(Vector3 pos)
     {
         PlayAudioAtPoint(shieldDestroyed, pos);
+    }
+
+    private void PlayCutGrass()
+    {
+        PlayAudioEffect(cutGrass);
     }
 }

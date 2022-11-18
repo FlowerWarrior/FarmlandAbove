@@ -58,7 +58,7 @@ public class InventoryUI : I_ItemsGrid
             if (itemClicked.thisItem is SeedData)
             {
                 SeedData seed = (SeedData)itemClicked.thisItem;
-                if (seed.seedLvl < seed.plantClass.value.Length && QuestMgr.instance.currentQuest >= quest.Merge)
+                if (seed.seedLvl < seed.plantClass.value.Length && QuestMgr.instance.currentQuest >= quest.ClickAnySeed)
                 {
                     mergeButtonRT.gameObject.SetActive(true);
                     mergeButtonRT.position = buttonPos + new Vector3(0, -104f, 0);
