@@ -9,6 +9,8 @@ public class AirTargetsMgr : MonoBehaviour
     [SerializeField] Transform target;
     bool isActive = false;
     bool isOxygenBarFilled = false;
+    float targetChangeTime = 1.4f;
+    float timer = 0;
 
     private void Update()
     {
@@ -27,10 +29,15 @@ public class AirTargetsMgr : MonoBehaviour
             {
                 AirTargetUI.instance.target = target;
                 myGrowSlot.isAirTargetHit = AirTargetUI.instance.isHittingTargetUI;
+                timer += Time.deltaTime;
+                if (timer >= targetChangeTime)
+                {
+                    MoveTargetRandomly();
+                    timer = 0;
+                }
                 if (!isActive)
                 {
                     isActive = true;
-                    StartCoroutine(TargetsLoop());
                 }
             }
             else
@@ -38,7 +45,6 @@ public class AirTargetsMgr : MonoBehaviour
                 isActive = false;
                 myGrowSlot.isAirTargetHit = false;
                 AirTargetUI.instance.target = null;
-                StopAllCoroutines();
             }
         }
         else if (isActive)
@@ -46,7 +52,6 @@ public class AirTargetsMgr : MonoBehaviour
             isActive = false;
             myGrowSlot.isAirTargetHit = false;
             AirTargetUI.instance.target = null;
-            StopAllCoroutines();
         }
     }
 
@@ -57,14 +62,5 @@ public class AirTargetsMgr : MonoBehaviour
         offset.y = Random.Range(-0.3f, 0.3f);
         offset.z = Random.Range(-0.2f, 0.2f);
         target.position = transform.position + offset;    
-    }
-
-    IEnumerator TargetsLoop()
-    {
-        while (true)
-        {
-            MoveTargetRandomly();
-            yield return new WaitForSeconds(1.4f);
-        }
     }
 }
