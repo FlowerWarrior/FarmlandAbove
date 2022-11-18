@@ -16,8 +16,8 @@ MonoBehaviour:
   inventorySprite: {fileID: 21300000, guid: 8a28e74831fdbaa40a0f5c896e658548, type: 3}
   itemName: Orchidea
   seedLvl: 1
-  value: b800000070010000e0020000
+  value: 5a000000b400000068010000
   prefab: {fileID: 7125543164711043566, guid: 599ccd9cb8a36dd45a690dfc8d338d14, type: 3}
-  fullyGrownTicksRequired: 8000
+  fullyGrownTicksRequired: 5000
   waterThirst: 0.3
   seedClass: {fileID: 11400000, guid: 0d58e60ea7f2bef438d563927200ab66, type: 2}

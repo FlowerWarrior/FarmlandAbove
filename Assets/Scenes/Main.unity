@@ -24998,7 +24998,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: PLANTING EFFICIENCY
+  m_text: LUCKY SHOT BOOST
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 6e00280219200bc4b96be82f6fbaab18, type: 2}
   m_sharedMaterial: {fileID: -5280504951725205476, guid: 6e00280219200bc4b96be82f6fbaab18,

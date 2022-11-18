@@ -24,7 +24,7 @@ public class GrowSlot : I_Interactable
     internal bool areStatsUIShown = false;
     internal bool isAirBoosted = false;
     bool isTouchingAirArea = false;
-    float airBoostFillSpeed = 0.2f;
+    float airBoostFillSpeed = 0.35f;
     float airBoostUsageSpeed = 0.01f;
 
     internal float airBoostLvl = 0; // 0 <-> 1

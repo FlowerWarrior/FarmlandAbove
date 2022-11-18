@@ -16,8 +16,8 @@ MonoBehaviour:
   inventorySprite: {fileID: 21300000, guid: b2795f2ccb5f45e4ab0eee1b8db6abf1, type: 3}
   itemName: Beetroot
   seedLvl: 1
-  value: 140000002800000050000000
+  value: 190000003200000064000000
   prefab: {fileID: 7125543164711043566, guid: 3a144419cc76dd548ba012deb37dc612, type: 3}
-  fullyGrownTicksRequired: 3500
+  fullyGrownTicksRequired: 3400
   waterThirst: 1.2
   seedClass: {fileID: 11400000, guid: 18a0852ec86a8e849858ef181149f12e, type: 2}

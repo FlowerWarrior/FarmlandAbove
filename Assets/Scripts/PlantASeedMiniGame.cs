@@ -18,12 +18,28 @@ public class PlantASeedMiniGame : MonoBehaviour
     internal static System.Action<SeedData, int> PlantASeed;
     internal static System.Action IndicatorStopped;
 
+    bool didShowWhenTutorial = false;
+
     // Start is called before the first frame update
     void OnEnable()
     {
-        isChoosing = true;
-        textResult.text = "CLICK TO CHOOSE";
-        seedMiniGameOpened?.Invoke();
+        int rnd = Random.Range(0, 2);
+
+        if (rnd == 0 || !didShowWhenTutorial) // open this minigame
+        {
+            isChoosing = true;
+            textResult.text = "CLICK TO CHOOSE";
+            seedMiniGameOpened?.Invoke();
+            didShowWhenTutorial = true;
+        }
+        else // skip mini game
+        {
+            int boostValue = 0;
+            InventorySystem.instance.RemoveItemFromInventory(seed);
+            PlantASeed?.Invoke(seed, boostValue);
+            UIMGR.instance.CloseAllMenus();
+        }
+        
     }
 
     // Update is called once per frame

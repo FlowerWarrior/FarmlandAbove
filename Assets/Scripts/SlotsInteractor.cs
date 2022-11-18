@@ -173,6 +173,12 @@ public class SlotsInteractor : MonoBehaviour
                     switch (growSlotInstance.currentState)
                     {
                         case (GrowSlot.PlantState.Empty):
+                            if (QuestMgr.instance.currentQuest > quest.PlantSeed && QuestMgr.instance.currentQuest < quest.PlantSeed2)
+                            {
+                                currentPanel = null;
+                                break;
+                            }     
+
                             if (InventorySystem.instance.GetGooCount() > 0 && !growSlotInstance.isGoo)
                             {
                                 currentPanel = panelUseGoo_RT;

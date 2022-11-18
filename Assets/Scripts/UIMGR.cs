@@ -48,7 +48,7 @@ public class UIMGR : MonoBehaviour
     public void OpenPlantingBoostMiniGame(SeedData seed)
     {
         menuPlantingBoost.GetComponent<PlantASeedMiniGame>().seed = seed;
-        OpenMenu(menuPlantingBoost);
+        OpenMenu(menuPlantingBoost, true);
     }
 
     public void OpenSeedSelector(SeedData[] acceptableSeeds)
@@ -128,20 +128,21 @@ public class UIMGR : MonoBehaviour
         if (hideOtherWindows)
             CloseAllMenus();
 
-        menu.SetActive(true);
         UnlockCursor();
         PlayerRespawner.instance.DisablePlayerControls();
         isMenuOverlay = true;
+
+        menu.SetActive(true);
     }
 
-    private void LockCursor()
+    public void LockCursor()
     {
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
         SlotsInteractor.instance.canInteract = true;
     }
 
-    private void UnlockCursor()
+    public void UnlockCursor()
     {
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;

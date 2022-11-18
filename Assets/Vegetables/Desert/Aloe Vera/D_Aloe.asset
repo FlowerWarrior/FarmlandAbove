@@ -16,8 +16,8 @@ MonoBehaviour:
   inventorySprite: {fileID: 21300000, guid: 0ca4ab41fddc20c479eed4c134733e33, type: 3}
   itemName: Aloe Vera
   seedLvl: 1
-  value: 54000000a800000050010000
+  value: 5a000000b400000068010000
   prefab: {fileID: 7125543164711043566, guid: 100725bccfb45874db23c2b96ad1fd6b, type: 3}
-  fullyGrownTicksRequired: 4500
+  fullyGrownTicksRequired: 5000
   waterThirst: 4
   seedClass: {fileID: 11400000, guid: 8f0af10edbeb042488db7ba3aec80c8b, type: 2}

@@ -16,8 +16,8 @@ MonoBehaviour:
   inventorySprite: {fileID: 21300000, guid: 6d4777b7338f2a34aa0164d99626ef9b, type: 3}
   itemName: Hollyberry
   seedLvl: 1
-  value: 68010000d0020000a0050000
+  value: b400000068010000d0020000
   prefab: {fileID: 7125543164711043566, guid: 723e92e50925dc3438beca7789296198, type: 3}
-  fullyGrownTicksRequired: 8000
+  fullyGrownTicksRequired: 7500
   waterThirst: 0.3
   seedClass: {fileID: 11400000, guid: e5ce2d88254f32646826a4d98e9c2605, type: 2}

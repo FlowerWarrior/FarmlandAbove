@@ -16,5 +16,5 @@ MonoBehaviour:
   inventorySprite: {fileID: 21300000, guid: 8ef0f55883f55e14e9812bf0492353e5, type: 3}
   itemName: Aloe Vera
   seedLvl: 1
-  cost: 42
+  cost: 40
   plantClass: {fileID: 11400000, guid: a2c415ccf16a36f46985ffcfdb674d5c, type: 2}

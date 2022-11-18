@@ -16,5 +16,5 @@ MonoBehaviour:
   inventorySprite: {fileID: 21300000, guid: f0ba137e62cedce48a8d0fc13fde40a4, type: 3}
   itemName: Cactus
   seedLvl: 1
-  cost: 11
+  cost: 10
   plantClass: {fileID: 11400000, guid: 32ae0ad5a7eb8d64eb2a10fb97ff6856, type: 2}

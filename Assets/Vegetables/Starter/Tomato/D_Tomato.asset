@@ -16,8 +16,8 @@ MonoBehaviour:
   inventorySprite: {fileID: 21300000, guid: 585a6724ba5fa2c4db2dbc7e0fff9d55, type: 3}
   itemName: Tomato
   seedLvl: 1
-  value: a00000004001000080020000
+  value: b400000068010000d0020000
   prefab: {fileID: 7125543164711043566, guid: 72f9e277002ab8843b7ca2c176153adb, type: 3}
-  fullyGrownTicksRequired: 7000
+  fullyGrownTicksRequired: 7500
   waterThirst: 1
   seedClass: {fileID: 11400000, guid: f952bb680a2577b42b9d9b4002cf16e7, type: 2}
