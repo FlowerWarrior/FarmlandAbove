@@ -27,6 +27,7 @@ public class GrowSlot : I_Interactable
     float airBoostFillSpeed = 0.32f;
     float airBoostUsageSpeed = 0.01f;
 
+    internal float lightLevel = 0; // 0 <-> 1
     internal float airBoostLvl = 0; // 0 <-> 1
     internal bool isGoo = false;
     [SerializeField] GameObject gooMesh;
@@ -88,6 +89,8 @@ public class GrowSlot : I_Interactable
                     plantWaterLevel = 0f;
                 }
             }
+
+            lightLevel = DayNightMgr.instance.GetSunLightValue() + TorchesMgr.instance.GetLightLevel(transform.position, islandIndex);
 
             if (IsPerfectWatered())
             {

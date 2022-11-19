@@ -80,9 +80,10 @@ public class BuildMode : MonoBehaviour
                 }
                 meshRend.materials = newMats;
 
-                if (Input.GetButtonDown("Fire1") && !UIMGR.instance.isMenuOverlay)
+                if (Input.GetButtonDown("Fire1"))
                 {
-                    CantPlace?.Invoke();
+                    if (!TorchesMgr.instance.CanPlaceOnIsland(currentIsland))
+                        CantPlace?.Invoke();
                 }
             }
             else

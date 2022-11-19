@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Torch : I_Interactable
 {
-    [SerializeField] internal int lifespan = 30;
+    [SerializeField] internal int lifespan = 40;
 
     private void Awake()
     {

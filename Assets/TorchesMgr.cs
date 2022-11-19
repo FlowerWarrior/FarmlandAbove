@@ -27,4 +27,14 @@ public class TorchesMgr : MonoBehaviour
     {
         return (_realTorchHolders[islandIndex].childCount < 2);
     }
+
+    public float GetLightLevel(Vector3 pos, int islandId)
+    {
+        float lightLevel = 0;
+        for (int i = 0; i < _realTorchHolders[islandId].childCount; i++)
+        {
+            lightLevel += 3f / Vector3.Distance(pos, _realTorchHolders[islandId].GetChild(i).position);
+        }
+        return Mathf.Clamp(lightLevel, 0, 1);
+    }
 }

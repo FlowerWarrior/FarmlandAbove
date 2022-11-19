@@ -69,4 +69,28 @@ public class DayNightMgr : MonoBehaviour
         
         RenderSettings.ambientLight = sunLight.color;
     }
+
+    public float GetSunLightValue()
+    {
+        float x = (transform.rotation.eulerAngles.x % 360) / 360f * 20f;
+        float y = 0;
+        if (x >= 0 && x < 5)
+        {
+            y = ((3.3f / (-x - 0.6f) + 5.6f) + 4 )/ 2;
+        }
+        else if (x >= 5 && x < 10)
+        {
+            y = ((3.3f / (x - 10.6f) + 5.6f) + 4) / 2;
+        }
+        else if (x >= 10 && x < 15)
+        {
+            y = ((3.3f / (x - 9.13f) + -3.7f) + 4) / 2;
+        }
+        else if (x >= 15 && x <= 20)
+        {
+            y = ((2.1f / (-x + 20.6f) + -3.5f) + 4) / 2;
+        }
+        y /= 4.5f;
+        return y;
+    }
 }

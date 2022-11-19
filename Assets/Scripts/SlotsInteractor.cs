@@ -26,7 +26,7 @@ public class SlotsInteractor : MonoBehaviour
     internal bool canInteract = true;
     I_Interactable closestSlot = null;
 
-    public static System.Action<float, string, int, int, bool, int, bool, float, bool> UpdateGrowStats; // waterLevel, name, lvl
+    public static System.Action<float, string, int, int, bool, int, bool, float, bool, float> UpdateGrowStats; // waterLevel, name, lvl
     internal static System.Action InteractMenu;
     internal static System.Action RefillWater;
 
@@ -135,7 +135,8 @@ public class SlotsInteractor : MonoBehaviour
                     (int)(growSlotInstance.plantProgress*100f),
                     growSlotInstance.IsAirBoostActive(),
                     growSlotInstance.airBoostLvl,
-                    growSlotInstance.isGoo);
+                    growSlotInstance.isGoo,
+                    growSlotInstance.lightLevel);
             }
         }
     }

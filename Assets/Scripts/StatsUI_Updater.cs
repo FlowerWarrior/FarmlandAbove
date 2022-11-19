@@ -8,6 +8,8 @@ public class StatsUI_Updater : MonoBehaviour
 {
     [SerializeField] Slider waterSlider;
     [SerializeField] Slider airboostSlider;
+    [SerializeField] Slider lightSlider;
+    [SerializeField] Image lightImage;
     [SerializeField] TextMeshProUGUI textName;
     [SerializeField] TextMeshProUGUI textBoost;
     [SerializeField] Image waterImg;
@@ -29,7 +31,7 @@ public class StatsUI_Updater : MonoBehaviour
         SlotsInteractor.UpdateGrowStats -= UpdateStats;
     }
 
-    private void UpdateStats(float waterLevel, string name, int lvl, int growthSpeedBoost, bool isPerfectWatered, int progress, bool isAirBoosted, float airBoostLvl, bool isGoo)
+    private void UpdateStats(float waterLevel, string name, int lvl, int growthSpeedBoost, bool isPerfectWatered, int progress, bool isAirBoosted, float airBoostLvl, bool isGoo, float lightLevel)
     {
         waterSlider.value = waterLevel / 100f;
         textName.text = $"{name}(lv{lvl}) {progress}%";
@@ -51,6 +53,8 @@ public class StatsUI_Updater : MonoBehaviour
         {
             textBoost.text = $"{growthSpeedBoost - 100}% speed";
         }
+
+        lightSlider.value = lightLevel;
 
         airboostSlider.value = airBoostLvl;
         if (isAirBoosted)
