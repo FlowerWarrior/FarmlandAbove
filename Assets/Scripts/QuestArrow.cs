@@ -10,7 +10,7 @@ public class QuestArrow : MonoBehaviour
     [SerializeField] MeshRenderer meshRenderer;
     [SerializeField] Transform t_Tree;
     [SerializeField] Transform t_Shop;
-    [SerializeField] Transform t_GrowSlot;
+    [SerializeField] Transform[] t_GrowSlot;
     [SerializeField] Transform t_Sell;
     [SerializeField] Transform t_WaterWell;
     [SerializeField] Transform t_CactusSeed;
@@ -37,7 +37,16 @@ public class QuestArrow : MonoBehaviour
                 target = null;
                 break;
             case quest.CollectCrop:
-                target = null; //t_GrowSlot; //maybe change to dynamic
+                Transform readyGrowSlot = null;
+                for (int i = 1; i < t_GrowSlot.Length; i++)
+                {
+                    if (t_GrowSlot[i].gameObject.GetComponent<GrowSlot>().currentState == GrowSlot.PlantState.ReadyForHarvest)
+                    {
+                        readyGrowSlot = t_GrowSlot[i];
+                        break;
+                    }
+                }
+                target = readyGrowSlot;
                 break;
             case quest.BuySeed0:
                 target = t_Shop;
@@ -61,13 +70,33 @@ public class QuestArrow : MonoBehaviour
                 target = t_Sell;
                 break;
             case quest.PlantSeed:
-                target = t_GrowSlot;
+                Transform closestGrowSlot = t_GrowSlot[0];
+                for (int i = 1; i < t_GrowSlot.Length; i++)
+                {
+                    Vector3 playerPos = PlayerRespawner.instance.rb.transform.position;
+                    float oldDistance = Vector3.Distance(closestGrowSlot.position, playerPos);
+                    float newDistance = Vector3.Distance(t_GrowSlot[i].position, playerPos);
+                    if (newDistance < oldDistance)
+                    {
+                        closestGrowSlot = t_GrowSlot[i];
+                    }
+                }
+                target = closestGrowSlot;
                 break;
             case quest.RefillWaterTool:
                 target = t_WaterWell;
                 break;
             case quest.Water:
-                target = null;
+                Transform targetGrowSlot = null;
+                for (int i = 0; i < t_GrowSlot.Length; i++)
+                {
+                    if (t_GrowSlot[i].gameObject.GetComponent<GrowSlot>().currentState == GrowSlot.PlantState.Growing)
+                    {
+                        targetGrowSlot = t_GrowSlot[i];
+                        break;
+                    }
+                }
+                target = targetGrowSlot;
                 break;
             case quest.None:
                 target = null;
@@ -80,6 +109,36 @@ public class QuestArrow : MonoBehaviour
                 break;
             case quest.QuestCompleted:
                 target = null;
+                break;
+            case quest.OpenBuildMode:
+                target = null;
+                break;
+            case quest.PlaceTorch:
+                target = null;
+                break;
+            case quest.PlantSeed2:
+                Transform emptySlot = null;
+                for (int i = 1; i < t_GrowSlot.Length; i++)
+                {
+                    if (t_GrowSlot[i].gameObject.GetComponent<GrowSlot>().currentState == GrowSlot.PlantState.Empty)
+                    {
+                        emptySlot = t_GrowSlot[i];
+                        break;
+                    }
+                }
+                target = emptySlot;
+                break;
+            case quest.PlantSeed3:
+                Transform emptySlot2 = null;
+                for (int i = 1; i < t_GrowSlot.Length; i++)
+                {
+                    if (t_GrowSlot[i].gameObject.GetComponent<GrowSlot>().currentState == GrowSlot.PlantState.Empty)
+                    {
+                        emptySlot2 = t_GrowSlot[i];
+                        break;
+                    }
+                }
+                target = emptySlot2;
                 break;
         }
     }

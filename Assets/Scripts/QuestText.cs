@@ -90,6 +90,12 @@ public class QuestText : MonoBehaviour
             case quest.PickupCactusSeed:
                 newText = "Pickup Cactus Seed";
                 break;
+            case quest.OpenBuildMode:
+                newText = "Press 'T' to enter torch mode";
+                break;
+            case quest.PlaceTorch:
+                newText = "Place torch near the plants to provide them with light";
+                break;
             case quest.None:
                 GetComponent<TextMeshProUGUI>().enabled = false;
                 transform.GetChild(0).gameObject.SetActive(false);

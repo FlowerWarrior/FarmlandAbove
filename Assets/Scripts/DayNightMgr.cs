@@ -11,6 +11,9 @@ public class DayNightMgr : MonoBehaviour
     [SerializeField] Light sunLight;
     [SerializeField] Color32 _sunAboveColor, _sunsetColor, _nightColor;
 
+    internal static System.Action EnteredFirstNight;
+    [HideInInspector] internal bool didEnterFirstNight = false;
+
     public static DayNightMgr instance;
 
     private void Awake()
@@ -60,6 +63,10 @@ public class DayNightMgr : MonoBehaviour
             if (newRot.x > 180 && newRot.x < 270) // Sunrise -> Noon
             {
                 sunLight.color = Color.Lerp(_sunsetColor, _nightColor, (newRot.x - 180f) / 90f);
+                if (!didEnterFirstNight && newRot.x > 200)
+                {
+                    EnteredFirstNight?.Invoke();
+                }
             }
             if (newRot.x > 270 && newRot.x < 360) // Noon -> Sunset
             {

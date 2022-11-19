@@ -17,6 +17,8 @@ public class ToolsUseManager : MonoBehaviour
 
     [SerializeField] MeshRenderer konwekaFilled_MR;
     [SerializeField] MeshRenderer konwekaEmpty_MR;
+    [SerializeField] LayerMask slimeLayer;
+    [SerializeField] float axeSlimeHitDistance = 4f;
 
     Animator _toolAnimator;
 
@@ -242,7 +244,21 @@ public class ToolsUseManager : MonoBehaviour
     public void EnteredAxeHittingPos()
     {
         axeCanHit = true;
-        AxeUsed?.Invoke();
+        AxeUsed?.Invoke();        
+    }
+
+    public void AxeCheckForSlimeHits()
+    {
+        RaycastHit hit;
+        Vector3 startPos = Camera.main.transform.position;
+        Vector3 dir = Camera.main.transform.forward;
+        if (Physics.Raycast(startPos, dir, out hit, axeSlimeHitDistance, slimeLayer))
+        {
+            int power = 60;
+            Vector3 forceVector = Camera.main.transform.forward * power;
+            forceVector.y /= 5f;
+            hit.collider.gameObject.GetComponent<Rigidbody>().AddForce(forceVector, ForceMode.Impulse);
+        }
     }
 
     public void ExitedAxeHittingPos()

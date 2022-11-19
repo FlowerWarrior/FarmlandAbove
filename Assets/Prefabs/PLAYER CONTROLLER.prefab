@@ -9785,7 +9785,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1092348732
 Transform:
   m_ObjectHideFlags: 0
@@ -10101,7 +10101,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4803494492069628683
 Transform:
   m_ObjectHideFlags: 0
@@ -10614,6 +10614,10 @@ MonoBehaviour:
   airBlowTrigger: {fileID: 573139326}
   konwekaFilled_MR: {fileID: 1223987507}
   konwekaEmpty_MR: {fileID: 1059060414}
+  slimeLayer:
+    serializedVersion: 2
+    m_Bits: 128
+  axeSlimeHitDistance: 1.55
 --- !u!1 &6492427182449779892
 GameObject:
   m_ObjectHideFlags: 0

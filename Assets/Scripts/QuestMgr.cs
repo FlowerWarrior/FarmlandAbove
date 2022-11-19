@@ -51,7 +51,7 @@ public class QuestMgr : MonoBehaviour
 
         PlantASeedMiniGame.seedMiniGameOpened += () => { SetQuestCompleted(quest.PlantSeed); };
 
-        PlantASeedMiniGame.PlantASeed += (SeedData a, int b) => { SetQuestCompleted(quest.PickPlantBoost); SetQuestCompleted(quest.PlantSeed3); SetQuestCompleted(quest.PlantSeed2); };
+        GrowSlot.SeedPlanted += (GrowSlot a, Vector3 b, int c) => { SetQuestCompleted(quest.PickPlantBoost); SetQuestCompleted(quest.PlantSeed3); SetQuestCompleted(quest.PlantSeed2); };
 
         SlotsInteractor.RefillWater += () => { SetQuestCompleted(quest.RefillWaterTool); };
 
@@ -66,6 +66,8 @@ public class QuestMgr : MonoBehaviour
         InventorySystem.ItemSold += () => { SetQuestCompleted(quest.SellCrop); };
 
         ZoneTrigger.DiscoveredIsland += (int id) => { if (id == 1) { OverrideCurrentQuest(quest.CutDownTrees); tutorialInProgress = true; }  };
+
+        DayNightMgr.EnteredFirstNight += () => { if (currentQuest == quest.None) { OverrideCurrentQuest(quest.OpenBuildMode); tutorialInProgress = true; } };
 
         Tree.TreeDestroyed += () => { SetQuestCompleted(quest.CutDownTrees); };
 
@@ -161,7 +163,11 @@ public enum quest
     Merge,
     CloseInventory,
     None,
+    OpenBuildMode,
+    PlaceTorch,
     CutDownTrees,
     PickupCactusSeed,
     QuestCompleted,
+    BlowOffSlimes, // todo
+    PickupGoo, // todo
 }
