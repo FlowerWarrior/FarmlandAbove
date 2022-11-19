@@ -19,6 +19,8 @@ public class UIMGR : MonoBehaviour
     [SerializeField] Image waterLevelFillImg;
     [SerializeField] Image waterToolImg;
     [SerializeField] Image waterCrossImg;
+    [SerializeField] GameObject[] hideInBuildMode;
+    [SerializeField] GameObject[] showInBuildMode;
 
     internal bool isMenuOverlay = false;
     internal static UIMGR instance;
@@ -152,6 +154,30 @@ public class UIMGR : MonoBehaviour
     private void UpdateCoinsStat(int deltaAmount)
     {
         UpdateCoinsUI?.Invoke(InventorySystem.instance.GetCoins());
+    }
+
+    public void EnterBuildModeUI()
+    {
+        for (int i = 0; i < hideInBuildMode.Length; i++)
+        {
+            hideInBuildMode[i].SetActive(false);
+        }
+        for (int i = 0; i < showInBuildMode.Length; i++)
+        {
+            showInBuildMode[i].SetActive(true);
+        }
+    }
+
+    public void ExitBuildModeUI()
+    {
+        for (int i = 0; i < hideInBuildMode.Length; i++)
+        {
+            hideInBuildMode[i].SetActive(true);
+        }
+        for (int i = 0; i < showInBuildMode.Length; i++)
+        {
+            showInBuildMode[i].SetActive(false);
+        }
     }
 
     #endregion

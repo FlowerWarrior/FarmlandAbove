@@ -345,7 +345,7 @@ GameObject:
   - component: {fileID: 2919727072600965063}
   - component: {fileID: 4559157865261704127}
   - component: {fileID: 4559157865261704000}
-  m_Layer: 3
+  m_Layer: 13
   m_Name: Dirt Row Habitat
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -795,7 +795,7 @@ PrefabInstance:
     - target: {fileID: 7481558973873372058, guid: de3f341e81c32b2479be4ae9ae2b4b75,
         type: 3}
       propertyPath: m_Layer
-      value: 3
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 7481558973873372060, guid: de3f341e81c32b2479be4ae9ae2b4b75,
         type: 3}

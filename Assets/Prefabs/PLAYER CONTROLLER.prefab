@@ -10365,6 +10365,7 @@ GameObject:
   - component: {fileID: 6492427182170994337}
   - component: {fileID: 6492427182170994332}
   - component: {fileID: 6271785566777879288}
+  - component: {fileID: 40621059}
   m_Layer: 8
   m_Name: Player
   m_TagString: Player
@@ -10490,7 +10491,7 @@ MonoBehaviour:
   groundOverlapRadius: 0.17
   whatIsGround:
     serializedVersion: 2
-    m_Bits: 136
+    m_Bits: 8328
   groundCheckPoint: {fileID: 6492427182855738307}
   airMoveSpeed: 5
   airAcceleration: 16
@@ -10508,6 +10509,31 @@ MonoBehaviour:
   walkBobbingFrequency: {x: 1.1, y: 2.2}
   idleBobbingScale: {x: 0.01, y: 0.015}
   idleBobbingFrequency: {x: 1, y: 2}
+--- !u!114 &40621059
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6492427182170994338}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d5b7490b2708f245a0adbeac5cf8725, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  obstaclesLayer:
+    serializedVersion: 2
+    m_Bits: 24960
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 8
+  rayDistance: 11
+  ghostTorchPrefab: {fileID: 6104649184413249779, guid: 7258e024b0c20ac488fab75a0d5b314d,
+    type: 3}
+  realTorchPrefab: {fileID: 8407271116740485401, guid: 0ef350f65853b184fa97e519874cff65,
+    type: 3}
+  matAcceptable: {fileID: 2100000, guid: b25b176020eb91349903ce4beaca28a8, type: 2}
+  matWrong: {fileID: 2100000, guid: 499e16a39860dfa4a86c5d8de03b668e, type: 2}
 --- !u!1 &6492427182174394216
 GameObject:
   m_ObjectHideFlags: 0

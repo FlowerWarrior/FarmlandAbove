@@ -45,7 +45,7 @@ GameObject:
   - component: {fileID: 8542585271031802060}
   - component: {fileID: 8542585271031802061}
   - component: {fileID: 226039317}
-  m_Layer: 3
+  m_Layer: 13
   m_Name: sign
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -142,7 +142,7 @@ GameObject:
   - component: {fileID: 8542585271207527718}
   - component: {fileID: 8542585271207527712}
   - component: {fileID: 8542585271207527713}
-  m_Layer: 3
+  m_Layer: 13
   m_Name: Bridge Sign
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -156,8 +156,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8542585271207527719}
-  m_LocalRotation: {x: -0, y: 0.9761364, z: -0, w: -0.21715857}
-  m_LocalPosition: {x: 1.6609993, y: 0, z: -0.7780001}
+  m_LocalRotation: {x: -0, y: 0.99418145, z: -0, w: -0.107718095}
+  m_LocalPosition: {x: 0.6690006, y: 0, z: -0.81200004}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -165,7 +165,7 @@ Transform:
   - {fileID: 8542585271031802098}
   m_Father: {fileID: 8542585270735377937}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 205.084, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 192.368, z: 0}
 --- !u!114 &8542585271207527712
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -179,7 +179,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bridgeBuilt: {fileID: 8812477784801502584}
-  cost: 1000
+  bridgeIndex: 0
+  islandDestination: {fileID: 0}
+  cost: 250
 --- !u!135 &8542585271207527713
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -205,7 +207,7 @@ GameObject:
   - component: {fileID: 8542585271866285280}
   - component: {fileID: 8542585271866285281}
   - component: {fileID: 8542585271866285286}
-  m_Layer: 3
+  m_Layer: 13
   m_Name: Canvas Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -305,7 +307,7 @@ GameObject:
   - component: {fileID: 8542585272588629877}
   - component: {fileID: 8542585272588629879}
   - component: {fileID: 8542585272588629876}
-  m_Layer: 3
+  m_Layer: 13
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -362,7 +364,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'BUILD BRIDGE
 
-    FOR 1000$'
+    FOR 250$'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
