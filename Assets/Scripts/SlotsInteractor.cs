@@ -16,6 +16,7 @@ public class SlotsInteractor : MonoBehaviour
     [SerializeField] RectTransform panelUseGoo_RT;
     [SerializeField] RectTransform panelPickupSeed_RT;
     [SerializeField] RectTransform panelCutGrass_RT;
+    [SerializeField] RectTransform panelTorch_RT;
     internal RectTransform currentPanel = null;
 
     [SerializeField] Vector3 offset;
@@ -104,6 +105,7 @@ public class SlotsInteractor : MonoBehaviour
         panelUseGoo_RT.gameObject.SetActive(false);
         panelPickupSeed_RT.gameObject.SetActive(false);
         panelCutGrass_RT.gameObject.SetActive(false);
+        panelTorch_RT.gameObject.SetActive(false);
 
         if (currentPanel != null)
         {
@@ -329,6 +331,13 @@ public class SlotsInteractor : MonoBehaviour
                         SeedCollectable collectable = (SeedCollectable)closestSlot;
                         collectable.PickUp();
                     }
+                    break;
+
+                // Torch point
+                case interactablePoint.Torch:
+                    currentPanel = panelTorch_RT;
+                    Torch torch = (Torch)closestSlot;
+                    panelTorch_RT.GetComponent<InteractTorchUI>().UpdateTime(torch.lifespan);
                     break;
             }
         }

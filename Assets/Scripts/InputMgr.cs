@@ -79,5 +79,24 @@ public class InputMgr : MonoBehaviour
             return 0f;
     }
 
+    public bool GetButtonDownBuildMode()
+    {
+        if (movementEnabled)
+            return Input.GetButtonDown("BuildMode");
+        else
+            return false;
+    }
+
+    public bool GetLeftMouseDown()
+    {
+        if (movementEnabled)
+        {
+            return Input.GetButtonDown("Fire1");
+        }
+            
+        else
+            return false;
+    }
+
     #endregion
 }

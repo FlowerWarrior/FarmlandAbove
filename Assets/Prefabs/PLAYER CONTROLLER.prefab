@@ -10523,7 +10523,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   obstaclesLayer:
     serializedVersion: 2
-    m_Bits: 24960
+    m_Bits: 24704
   groundLayer:
     serializedVersion: 2
     m_Bits: 8

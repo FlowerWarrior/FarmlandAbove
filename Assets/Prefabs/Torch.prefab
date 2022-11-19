@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8407271114831252581}
   - component: {fileID: 8407271114831252603}
   - component: {fileID: 8407271114831252602}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: Point Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -126,7 +126,7 @@ GameObject:
   - component: {fileID: 8407271114962854964}
   - component: {fileID: 8407271114962855114}
   - component: {fileID: 8407271114962854965}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: Fire Particles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4946,7 +4946,9 @@ GameObject:
   m_Component:
   - component: {fileID: 8407271116740485406}
   - component: {fileID: 8407271116740485407}
-  m_Layer: 0
+  - component: {fileID: -7505059042388661130}
+  - component: {fileID: 8159381800773879124}
+  m_Layer: 14
   m_Name: Torch
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4985,6 +4987,32 @@ CapsuleCollider:
   m_Height: 1.22
   m_Direction: 2
   m_Center: {x: 0, y: 0, z: 0.49}
+--- !u!114 &-7505059042388661130
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8407271116740485401}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d4ffcf15bd048f94285e3dc72fe96af0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lifespan: 30
+--- !u!135 &8159381800773879124
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8407271116740485401}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.67
+  m_Center: {x: 0, y: 0, z: 1.1}
 --- !u!1 &8677813439223076439
 GameObject:
   m_ObjectHideFlags: 0
@@ -4996,7 +5024,7 @@ GameObject:
   - component: {fileID: 8297347899418791149}
   - component: {fileID: 4938692189543711560}
   - component: {fileID: 7164441030927792002}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: Mesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5047,6 +5075,7 @@ MeshRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: 1c6163c3365326c489c46bf731a297a1, type: 2}
+  - {fileID: 2100000, guid: 68238f0a98dc5ed46b51ceb6bc403c4a, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

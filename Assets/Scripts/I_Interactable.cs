@@ -33,5 +33,6 @@ enum interactablePoint
     GrowSlot,
     WaterRefill,
     Feces,
-    Seed
+    Seed,
+    Torch
 }
