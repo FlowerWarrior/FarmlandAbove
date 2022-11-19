@@ -120,6 +120,7 @@ public class QuestMgr : MonoBehaviour
             OverrideCurrentQuest(quest.None);
             UIMGR.instance.CloseAllMenus();
             WelcomeTxt.instance.ShowTitle("- TUTORIAL COMPLETED-");
+            print("tutorial completed");
             tutorialInProgress = false;
         }
         else if (completedQuest == quest.CloseShop ||

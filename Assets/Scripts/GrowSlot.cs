@@ -9,7 +9,7 @@ public class GrowSlot : I_Interactable
 
     [SerializeField] VegetableData currentVegetable = null;
     [SerializeField] internal SeedData currentSeed { get; private set; } = null;
-    [SerializeField] GameObject plantReadyCanvas;
+    //[SerializeField] GameObject plantReadyCanvas;
     [SerializeField] ParticleSystem hitParticles;
     [SerializeField] WaterIndicator waterIndicator;
     [SerializeField] HPbar hpbar;
@@ -24,7 +24,7 @@ public class GrowSlot : I_Interactable
     internal bool areStatsUIShown = false;
     internal bool isAirBoosted = false;
     bool isTouchingAirArea = false;
-    float airBoostFillSpeed = 0.35f;
+    float airBoostFillSpeed = 0.32f;
     float airBoostUsageSpeed = 0.01f;
 
     internal float airBoostLvl = 0; // 0 <-> 1
@@ -49,6 +49,7 @@ public class GrowSlot : I_Interactable
     internal static System.Action ReachedPerfectWater;
     internal static System.Action TookDamage;
     internal static System.Action CutGrass;
+    internal static System.Action<Vector3> GrassSpawned;
 
     internal enum PlantState
     {
@@ -90,18 +91,21 @@ public class GrowSlot : I_Interactable
 
             if (IsPerfectWatered())
             {
-                waterIndicator.gameObject.SetActive(false);
+                waterIndicator.ToggleTooMuchWater(false);
+                waterIndicator.ToggleNotEnoughWater(false);
             }
             else
             {
                 waterIndicator.gameObject.SetActive(true);
                 if (plantWaterLevel > 50f)
                 {
-                    waterIndicator.SetTooMuchWater();
+                    waterIndicator.ToggleTooMuchWater(true);
+                    waterIndicator.ToggleNotEnoughWater(false);
                 }
                 else
                 {
-                    waterIndicator.SetNotEnoughWater();
+                    waterIndicator.ToggleTooMuchWater(false);
+                    waterIndicator.ToggleNotEnoughWater(true);
                 }
             }
         }
@@ -145,10 +149,9 @@ public class GrowSlot : I_Interactable
     private void OnPlantReadyForHarvest()
     {
         currentState = PlantState.ReadyForHarvest;
-        waterIndicator.HideAll();
-        hpbar.HideHpBar();
-        Vector3 plantReadyImgPos = plantInstance.transform.GetChild(2).position;
-        Instantiate(plantReadyCanvas, plantReadyImgPos, Quaternion.identity, transform);
+        waterIndicator.ToggleReady(true);
+        //Vector3 plantReadyImgPos = plantInstance.transform.GetChild(2).position;
+        //Instantiate(plantReadyCanvas, plantReadyImgPos, Quaternion.identity, transform);
         PlantReady?.Invoke(this, transform.position, islandIndex);
     }
 
@@ -161,16 +164,11 @@ public class GrowSlot : I_Interactable
         }
         multiplier += (plantingBoost / 100f * multiplier);
 
-        if (!IsPerfectWatered())
-            multiplier *= 0f;
-
-        if (isBushyGrass)
-            multiplier *= 0f;
-
         if (IsAirBoostActive())
             multiplier *= 3f;
-        else
-            multiplier *= 0f;
+
+        if (!IsPerfectWatered() || isBushyGrass || !IsAirBoostActive())
+            multiplier *= 0.1f;
 
         return multiplier;
     }
@@ -274,7 +272,7 @@ public class GrowSlot : I_Interactable
     private void ResetGrowSlot()
     {
         currentState = PlantState.Empty;
-        waterIndicator.HideAll();
+        waterIndicator.DisableAll();
         hpbar.HideHpBar();
         ticksReceived = 0;
         plantProgress = 0f;
@@ -312,10 +310,15 @@ public class GrowSlot : I_Interactable
     {
         isBushyGrass = state;
         bushyGrass.SetActive(state);
-        if (!state)
+        if (state)
         {
-            bushyGrassTimeDelay = Random.Range(30f, 300f);
+            GrassSpawned?.Invoke(transform.position);
         }
+        else
+        {
+            bushyGrassTimeDelay = Random.Range(30f, 200f);
+        }
+        waterIndicator.ToggleWarning(state);
     }
 
     public void CutBushyGrass()
@@ -337,6 +340,7 @@ public class GrowSlot : I_Interactable
             gooMesh.SetActive(false);
 
         ToggleBushyGrass(false);
+        bushyGrassTimeDelay = Random.Range(10f, 200f);
     }
 
     private void OnEnable()

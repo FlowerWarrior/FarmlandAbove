@@ -4,24 +4,45 @@ using UnityEngine;
 
 public class WaterIndicator : MonoBehaviour
 {
-    [SerializeField] GameObject notEnoughWaterImg;
-    [SerializeField] GameObject tooMuchWaterImg;
+    [SerializeField] GameObject[] uiObjects;
 
-    public void SetTooMuchWater()
+    bool[] indicatorState = { false, false, false, false };
+
+    public void ToggleTooMuchWater(bool state) { indicatorState[0] = state; UpdateIndicator(); }
+
+    public void ToggleNotEnoughWater(bool state) { indicatorState[1] = state; UpdateIndicator(); }
+
+    public void ToggleWarning(bool state) { indicatorState[2] = state; UpdateIndicator(); }
+
+    public void ToggleReady(bool state) { indicatorState[3] = state; UpdateIndicator(); }
+
+    public void DisableAll()
     {
-        notEnoughWaterImg.SetActive(false);
-        tooMuchWaterImg.SetActive(true);
+        for (int i = 0; i < uiObjects.Length; i++)
+        {
+            indicatorState[i] = false;
+        }
+        UpdateIndicator();
     }
 
-    public void SetNotEnoughWater()
+    private void HideAll()
     {
-        notEnoughWaterImg.SetActive(true);
-        tooMuchWaterImg.SetActive(false);
+        for (int i = 0; i < uiObjects.Length; i++)
+        {
+            uiObjects[i].SetActive(false);
+        }
     }
 
-    public void HideAll()
+    public void UpdateIndicator()
     {
-        notEnoughWaterImg.SetActive(false);
-        tooMuchWaterImg.SetActive(false);
+        HideAll();
+        for (int i = uiObjects.Length-1; i >= 0; i--)
+        {
+            if (indicatorState[i])
+            {
+                uiObjects[i].SetActive(true);
+                return;
+            }
+        }
     }
 }

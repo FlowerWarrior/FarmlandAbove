@@ -10603,6 +10603,7 @@ MonoBehaviour:
   lightningSpawn: {fileID: 8300000, guid: 329e213f05bdfa3438d1009a0632efe6, type: 3}
   shieldDestroyed: {fileID: 8300000, guid: e0c71c0f95373494b9f937140cce22be, type: 3}
   cutGrass: {fileID: 8300000, guid: 952b4e02c94c3d542bdbce9d8e5405c6, type: 3}
+  grassSpawned: {fileID: 8300000, guid: e987c3dc459d23648892dd10dcd35c25, type: 3}
 --- !u!4 &541141568
 Transform:
   m_ObjectHideFlags: 0
@@ -43804,7 +43805,7 @@ MonoBehaviour:
   m_fontColor32:
     serializedVersion: 2
     rgba: 4287189520
-  m_fontColor: {r: 0.063412234, g: 0.32033744, b: 0.5377358, a: 1}
+  m_fontColor: {r: 0.37254903, g: 0.78431374, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:

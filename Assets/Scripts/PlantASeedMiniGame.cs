@@ -55,7 +55,7 @@ public class PlantASeedMiniGame : MonoBehaviour
         if (isChoosing)
             indicator.localPosition = new Vector3(x, 0, 0);
         
-        if (Input.GetButtonDown("UseTool"))
+        if (Input.GetButtonDown("UseTool") && isChoosing)
         {
             // confirmed
             isChoosing = false;
