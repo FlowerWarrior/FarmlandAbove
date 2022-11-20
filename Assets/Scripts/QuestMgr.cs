@@ -11,6 +11,7 @@ public class QuestMgr : MonoBehaviour
     internal quest currentQuest = quest.None;
 
     internal bool tutorialInProgress = true;
+    int currentTool = 0;
 
     private void Awake()
     {
@@ -65,13 +66,22 @@ public class QuestMgr : MonoBehaviour
         
         InventorySystem.ItemSold += () => { SetQuestCompleted(quest.SellCrop); };
 
-        ZoneTrigger.DiscoveredIsland += (int id) => { if (id == 1) { OverrideCurrentQuest(quest.CutDownTrees); tutorialInProgress = true; }  };
+        ZoneTrigger.DiscoveredIsland += (int id) => { if (id == 1) { OverrideCurrentQuest(quest.CutDownTrees); tutorialInProgress = true; }
+                                                      if (id == 2) { OverrideCurrentQuest(quest.SelectBlowTool); tutorialInProgress = true; } };
 
         DayNightMgr.EnteredFirstNight += () => { if (currentQuest == quest.None) { OverrideCurrentQuest(quest.OpenBuildMode); tutorialInProgress = true; } };
 
         Tree.TreeDestroyed += () => { SetQuestCompleted(quest.CutDownTrees); };
 
         SeedCollectable.SeedPickedUp += (int id) => { if (id == 0) SetQuestCompleted(quest.PickupCactusSeed); };
+
+        ToolsUseManager.ToolSelected += (int a) => {
+            currentTool = a;
+            if (currentQuest == quest.SelectWaterTool && a == 0)
+                SetQuestCompleted(quest.SelectWaterTool);
+            else if (currentQuest == quest.Water && a != 0)
+                OverrideCurrentQuest(quest.SelectWaterTool);
+        };
     }
 
     private void IncrementBuySeed()
@@ -113,6 +123,12 @@ public class QuestMgr : MonoBehaviour
         }
         else if (currentQuest == completedQuest)
         {
+            if (completedQuest == quest.RefillWaterTool && currentTool == 0)
+            {
+                OverrideCurrentQuest(quest.Water);
+                yield break;
+            }
+
             currentQuest++;
             ShowQuest?.Invoke(currentQuest);
         }
@@ -147,6 +163,7 @@ public enum quest
     PlantSeed,
     PickPlantBoost,
     RefillWaterTool,
+    SelectWaterTool,
     Water,
     UseSprinkler,
     PlantSeed2,
@@ -168,6 +185,7 @@ public enum quest
     CutDownTrees,
     PickupCactusSeed,
     QuestCompleted,
+    SelectBlowTool, // todo
     BlowOffSlimes, // todo
     PickupGoo, // todo
 }

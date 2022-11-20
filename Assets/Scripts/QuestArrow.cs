@@ -98,9 +98,6 @@ public class QuestArrow : MonoBehaviour
                 }
                 target = targetGrowSlot;
                 break;
-            case quest.None:
-                target = null;
-                break;
             case quest.CutDownTrees:
                 target = t_Tree;
                 break;
@@ -108,12 +105,6 @@ public class QuestArrow : MonoBehaviour
                 target = t_CactusSeed;
                 break;
             case quest.QuestCompleted:
-                target = null;
-                break;
-            case quest.OpenBuildMode:
-                target = null;
-                break;
-            case quest.PlaceTorch:
                 target = null;
                 break;
             case quest.PlantSeed2:
@@ -139,6 +130,9 @@ public class QuestArrow : MonoBehaviour
                     }
                 }
                 target = emptySlot2;
+                break;
+            default:
+                target = null;
                 break;
         }
     }

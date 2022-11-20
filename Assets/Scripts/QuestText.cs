@@ -63,8 +63,11 @@ public class QuestText : MonoBehaviour
             case quest.RefillWaterTool:
                 newText = "Refill water tool at the well";
                 break;
+            case quest.SelectWaterTool:
+                newText = "Select tool 1";
+                break;
             case quest.Water:
-                newText = "Water the plant (tool 1)";
+                newText = "Water the plant (LMB)";
                 break;
             case quest.UseSprinkler:
                 newText = "Use air blower (tool 3) and hit targets";
