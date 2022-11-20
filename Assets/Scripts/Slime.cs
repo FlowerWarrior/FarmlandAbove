@@ -18,6 +18,7 @@ public class Slime : MonoBehaviour
 
     internal static System.Action<Vector3> SlimeMoveSound;
     internal static System.Action<Vector3> SlimeHitObstacle;
+    internal static System.Action SlimeFellOffToVoid;
 
     public void OnAnimationAttack()
     {

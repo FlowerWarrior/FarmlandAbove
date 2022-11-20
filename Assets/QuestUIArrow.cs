@@ -9,6 +9,8 @@ public class QuestUIArrow : MonoBehaviour
     [SerializeField] Animator uiAnimator;
     [SerializeField] Image uiImage;
     [SerializeField] Vector3 pos_waterTool;
+    [SerializeField] Vector3 pos_axeTool;
+    [SerializeField] Vector3 pos_blowTool;
 
     private void Start()
     {
@@ -33,6 +35,12 @@ public class QuestUIArrow : MonoBehaviour
         {
             case quest.SelectWaterTool:
                 pos = pos_waterTool;
+                break;
+            case quest.SelectAxeTool:
+                pos = pos_axeTool;
+                break;
+            case quest.SelectBlowTool:
+                pos = pos_blowTool;
                 break;
             default:
                 ToggleUIArrow(false);

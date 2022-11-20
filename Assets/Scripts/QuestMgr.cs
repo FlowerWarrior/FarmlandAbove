@@ -66,8 +66,17 @@ public class QuestMgr : MonoBehaviour
         
         InventorySystem.ItemSold += () => { SetQuestCompleted(quest.SellCrop); };
 
-        ZoneTrigger.DiscoveredIsland += (int id) => { if (id == 1) { OverrideCurrentQuest(quest.CutDownTrees); tutorialInProgress = true; }
-                                                      if (id == 2) { OverrideCurrentQuest(quest.SelectBlowTool); tutorialInProgress = true; } };
+        ZoneTrigger.DiscoveredIsland += (int id) => { if (id == 1) { 
+                if (currentTool == 1)
+                {
+                    OverrideCurrentQuest(quest.CutDownTrees); tutorialInProgress = true;
+                }
+                else
+                {
+                    OverrideCurrentQuest(quest.SelectAxeTool); tutorialInProgress = true;
+                }
+            }
+            if (id == 2) { OverrideCurrentQuest(quest.SelectBlowTool); tutorialInProgress = true; } };
 
         DayNightMgr.EnteredFirstNight += () => { if (currentQuest == quest.None) { OverrideCurrentQuest(quest.OpenBuildMode); tutorialInProgress = true; } };
 
@@ -81,7 +90,19 @@ public class QuestMgr : MonoBehaviour
                 SetQuestCompleted(quest.SelectWaterTool);
             else if (currentQuest == quest.Water && a != 0)
                 OverrideCurrentQuest(quest.SelectWaterTool);
+
+            if (currentQuest == quest.SelectAxeTool && a == 1)
+                SetQuestCompleted(quest.SelectAxeTool);
+            else if (currentQuest == quest.CutDownTrees && a != 1)
+                OverrideCurrentQuest(quest.SelectAxeTool);
+
+            if (currentQuest == quest.SelectBlowTool && a == 2)
+                SetQuestCompleted(quest.SelectBlowTool);
+            else if (currentQuest == quest.BlowOffSlimes && a != 2)
+                OverrideCurrentQuest(quest.SelectBlowTool);
         };
+
+        Slime.SlimeFellOffToVoid += () => { SetQuestCompleted(quest.BlowOffSlimes); };
     }
 
     private void IncrementBuySeed()
@@ -182,6 +203,7 @@ public enum quest
     None,
     OpenBuildMode,
     PlaceTorch,
+    SelectAxeTool,
     CutDownTrees,
     PickupCactusSeed,
     QuestCompleted,

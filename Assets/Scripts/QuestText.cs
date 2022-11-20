@@ -87,8 +87,11 @@ public class QuestText : MonoBehaviour
             case quest.CollectCrop3:
                 newText = "Harvest plants when ready (2/3)";
                 break;
+            case quest.SelectAxeTool:
+                newText = "Select axe (tool 2)";
+                break;
             case quest.CutDownTrees:
-                newText = "Use axe (tool 2) to cut through trees & cactuses";
+                newText = "Cut through trees & cactuses";
                 break;
             case quest.PickupCactusSeed:
                 newText = "Pickup Cactus Seed";

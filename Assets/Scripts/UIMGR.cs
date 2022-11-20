@@ -21,6 +21,7 @@ public class UIMGR : MonoBehaviour
     [SerializeField] Image waterCrossImg;
     [SerializeField] GameObject[] hideInBuildMode;
     [SerializeField] GameObject[] showInBuildMode;
+    [SerializeField] RectTransform torchTimeOverlay_RT;
 
     internal bool isMenuOverlay = false;
     internal static UIMGR instance;
@@ -180,6 +181,18 @@ public class UIMGR : MonoBehaviour
         }
     }
 
+    public void UpdateTorchTimeUI(Vector3 pos, int torchTimeLeft)
+    {
+        torchTimeOverlay_RT.position = pos;
+        torchTimeOverlay_RT.GetComponent<InteractTorchUI>().UpdateTime(torchTimeLeft);
+        torchTimeOverlay_RT.gameObject.SetActive(true);
+    }
+
+    public void HideTorchTimeUI()
+    {
+        torchTimeOverlay_RT.gameObject.SetActive(false);
+    }
+
     #endregion
 
     #region MonoBehaviour Callbacks
@@ -199,6 +212,7 @@ public class UIMGR : MonoBehaviour
     private void Start()
     {
         LockCursor();
+        HideTorchTimeUI();
     }
 
     private void Update()

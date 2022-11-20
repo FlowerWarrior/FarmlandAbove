@@ -10534,6 +10534,9 @@ MonoBehaviour:
     type: 3}
   matAcceptable: {fileID: 2100000, guid: b25b176020eb91349903ce4beaca28a8, type: 2}
   matWrong: {fileID: 2100000, guid: 499e16a39860dfa4a86c5d8de03b668e, type: 2}
+  torchLayer:
+    serializedVersion: 2
+    m_Bits: 32768
 --- !u!1 &6492427182174394216
 GameObject:
   m_ObjectHideFlags: 0

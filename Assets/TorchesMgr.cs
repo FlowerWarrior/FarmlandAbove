@@ -33,7 +33,7 @@ public class TorchesMgr : MonoBehaviour
         float lightLevel = 0;
         for (int i = 0; i < _realTorchHolders[islandId].childCount; i++)
         {
-            lightLevel += 3f / Vector3.Distance(pos, _realTorchHolders[islandId].GetChild(i).position);
+            lightLevel += 1f / Vector3.Distance(pos, _realTorchHolders[islandId].GetChild(i).position);
         }
         return Mathf.Clamp(lightLevel, 0, 1);
     }

@@ -1,5 +1,51 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &8255595569903851190
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3705465149150344723}
+  - component: {fileID: 376216958113631}
+  m_Layer: 15
+  m_Name: uiPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3705465149150344723
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8255595569903851190}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0.68}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8407271116740485406}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!136 &376216958113631
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8255595569903851190}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.17
+  m_Height: 0.72
+  m_Direction: 2
+  m_Center: {x: 0, y: 0, z: 0.08}
 --- !u!1 &8407271114831252580
 GameObject:
   m_ObjectHideFlags: 0
@@ -4947,7 +4993,6 @@ GameObject:
   - component: {fileID: 8407271116740485406}
   - component: {fileID: 8407271116740485407}
   - component: {fileID: -7505059042388661130}
-  - component: {fileID: 8159381800773879124}
   m_Layer: 14
   m_Name: Torch
   m_TagString: Untagged
@@ -4970,6 +5015,7 @@ Transform:
   - {fileID: 8297347899418791149}
   - {fileID: 8407271114962854964}
   - {fileID: 8407271114831252581}
+  - {fileID: 3705465149150344723}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
@@ -4999,20 +5045,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d4ffcf15bd048f94285e3dc72fe96af0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lifespan: 30
---- !u!135 &8159381800773879124
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8407271116740485401}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 0
-  serializedVersion: 2
-  m_Radius: 0.67
-  m_Center: {x: 0, y: 0, z: 1.1}
+  lifespan: 60
 --- !u!1 &8677813439223076439
 GameObject:
   m_ObjectHideFlags: 0

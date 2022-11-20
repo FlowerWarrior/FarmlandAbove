@@ -11,6 +11,7 @@ public class BuildMode : MonoBehaviour
     [SerializeField] GameObject realTorchPrefab;
     [SerializeField] Material matAcceptable;
     [SerializeField] Material matWrong;
+    [SerializeField] LayerMask torchLayer;
 
     Transform heldTorch = null;
 
@@ -36,6 +37,18 @@ public class BuildMode : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        RaycastHit hit;
+        Transform camT = Camera.main.transform;
+        if (Physics.Raycast(camT.position, camT.forward, out hit, 6f, torchLayer))
+        {
+            Vector3 uiPos = Camera.main.WorldToScreenPoint(hit.collider.transform.position);
+            UIMGR.instance.UpdateTorchTimeUI(uiPos, hit.collider.gameObject.GetComponentInParent<Torch>().lifespan);
+        }
+        else
+        {
+            UIMGR.instance.HideTorchTimeUI();
+        }
+
         if (InputMgr.instance.GetButtonDownBuildMode())
         {
             if (heldTorch == null)

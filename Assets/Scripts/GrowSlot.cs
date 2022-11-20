@@ -173,6 +173,8 @@ public class GrowSlot : I_Interactable
         if (!IsPerfectWatered() || isBushyGrass || !IsAirBoostActive())
             multiplier *= 0.1f;
 
+        multiplier *= lightLevel;
+
         return multiplier;
     }
 
