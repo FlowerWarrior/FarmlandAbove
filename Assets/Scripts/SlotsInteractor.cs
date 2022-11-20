@@ -281,7 +281,7 @@ public class SlotsInteractor : MonoBehaviour
 
                 // Upgrades Point
                 case interactablePoint.Upgrades:
-                    if (QuestMgr.instance.currentQuest < quest.None)
+                    if (QuestMgr.instance.currentQuest < quest.GoToUpgradesPoint)
                     {
                         currentPanel = null;
                         break;

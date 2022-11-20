@@ -10789,6 +10789,7 @@ MonoBehaviour:
   t_Sell: {fileID: 1536620330}
   t_WaterWell: {fileID: 1177325744}
   t_CactusSeed: {fileID: 543450653354972214}
+  t_UpgradePoint: {fileID: 4559157864741807937}
 --- !u!1 &535080534
 GameObject:
   m_ObjectHideFlags: 0
@@ -25197,7 +25198,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 779225586d4953d4981259fa751b2101, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  showTutorial: 0
+  showTutorial: 1
 --- !u!1 &1349184594
 GameObject:
   m_ObjectHideFlags: 0
@@ -40374,6 +40375,7 @@ MonoBehaviour:
   pos_waterTool: {x: -119.05, y: -367.5, z: 0}
   pos_axeTool: {x: 0, y: -367.5, z: 0}
   pos_blowTool: {x: 119.05, y: -367.5, z: 0}
+  pos_Upgrade: {x: -123.7, y: 182.7, z: 0}
 --- !u!95 &2058663167
 Animator:
   serializedVersion: 4
@@ -43933,6 +43935,12 @@ PrefabInstance:
 --- !u!4 &4559157864741807936 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4093728704514442408, guid: 32ccc2ee4c2e84b48bc9db72232a6d9a,
+    type: 3}
+  m_PrefabInstance: {fileID: 4559157864741807935}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &4559157864741807937 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4559157865407366669, guid: 32ccc2ee4c2e84b48bc9db72232a6d9a,
     type: 3}
   m_PrefabInstance: {fileID: 4559157864741807935}
   m_PrefabAsset: {fileID: 0}

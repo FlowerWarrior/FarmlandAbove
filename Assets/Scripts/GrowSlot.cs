@@ -91,6 +91,7 @@ public class GrowSlot : I_Interactable
             }
 
             lightLevel = DayNightMgr.instance.GetSunLightValue() + TorchesMgr.instance.GetLightLevel(transform.position, islandIndex);
+            lightLevel = Mathf.Clamp(lightLevel, 0f, 1f);
 
             if (IsPerfectWatered())
             {

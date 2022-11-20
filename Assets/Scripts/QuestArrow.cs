@@ -14,6 +14,7 @@ public class QuestArrow : MonoBehaviour
     [SerializeField] Transform t_Sell;
     [SerializeField] Transform t_WaterWell;
     [SerializeField] Transform t_CactusSeed;
+    [SerializeField] Transform t_UpgradePoint;
     internal Transform target = null;
     bool isVisible = true;
 
@@ -69,6 +70,9 @@ public class QuestArrow : MonoBehaviour
             case quest.SellCrop:
                 target = t_Sell;
                 break;
+            case quest.GoToUpgradesPoint:
+                target = t_UpgradePoint;
+                break;
             case quest.PlantSeed:
                 Transform closestGrowSlot = t_GrowSlot[0];
                 for (int i = 1; i < t_GrowSlot.Length; i++)
@@ -108,28 +112,10 @@ public class QuestArrow : MonoBehaviour
                 target = null;
                 break;
             case quest.PlantSeed2:
-                Transform emptySlot = null;
-                for (int i = 1; i < t_GrowSlot.Length; i++)
-                {
-                    if (t_GrowSlot[i].gameObject.GetComponent<GrowSlot>().currentState == GrowSlot.PlantState.Empty)
-                    {
-                        emptySlot = t_GrowSlot[i];
-                        break;
-                    }
-                }
-                target = emptySlot;
+                target = null;
                 break;
             case quest.PlantSeed3:
-                Transform emptySlot2 = null;
-                for (int i = 1; i < t_GrowSlot.Length; i++)
-                {
-                    if (t_GrowSlot[i].gameObject.GetComponent<GrowSlot>().currentState == GrowSlot.PlantState.Empty)
-                    {
-                        emptySlot2 = t_GrowSlot[i];
-                        break;
-                    }
-                }
-                target = emptySlot2;
+                target = null;
                 break;
             default:
                 target = null;

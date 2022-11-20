@@ -102,6 +102,12 @@ public class QuestText : MonoBehaviour
             case quest.PlaceTorch:
                 newText = "Place torch near the plants to provide them with light";
                 break;
+            case quest.GoToUpgradesPoint:
+                newText = "Use upgrades point";
+                break;
+            case quest.BuyTutorialUpgrade:
+                newText = "Buy upgrade 'Gold Traces'";
+                break;
             case quest.None:
                 GetComponent<TextMeshProUGUI>().enabled = false;
                 transform.GetChild(0).gameObject.SetActive(false);

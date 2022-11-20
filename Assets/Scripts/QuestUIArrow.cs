@@ -11,6 +11,7 @@ public class QuestUIArrow : MonoBehaviour
     [SerializeField] Vector3 pos_waterTool;
     [SerializeField] Vector3 pos_axeTool;
     [SerializeField] Vector3 pos_blowTool;
+    [SerializeField] Vector3 pos_Upgrade;
 
     private void Start()
     {
@@ -41,6 +42,9 @@ public class QuestUIArrow : MonoBehaviour
                 break;
             case quest.SelectBlowTool:
                 pos = pos_blowTool;
+                break;
+            case quest.BuyTutorialUpgrade:
+                pos = pos_Upgrade;
                 break;
             default:
                 ToggleUIArrow(false);

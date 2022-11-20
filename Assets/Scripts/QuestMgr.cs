@@ -91,6 +91,11 @@ public class QuestMgr : MonoBehaviour
 
         Tree.TreeDestroyed += () => { SetQuestCompleted(quest.CutDownTrees); };
 
+        UpgradesMenu.OpenedUpgradesMenu += () => { SetQuestCompleted(quest.GoToUpgradesPoint); };
+        UpgradesMenu.ClosedUpgradesMenu += () => { if (currentQuest == quest.BuyTutorialUpgrade) OverrideCurrentQuest(quest.GoToUpgradesPoint); };
+
+        UpgradeButton.BoughtUpgrade += () => { SetQuestCompleted(quest.BuyTutorialUpgrade); };
+
         SeedCollectable.SeedPickedUp += (int id) => { if (id == 0) SetQuestCompleted(quest.PickupCactusSeed); };
 
         ToolsUseManager.ToolSelected += (int a) => {
@@ -149,7 +154,7 @@ public class QuestMgr : MonoBehaviour
         { 
             OverrideCurrentQuest(quest.None);
             tutorialInProgress = false;
-            WelcomeTxt.instance.ShowTitle("- TUTORIAL 2 COMPLETED-");
+            //WelcomeTxt.instance.ShowTitle("- TUTORIAL 2 COMPLETED-");
         }
         else if (currentQuest == completedQuest)
         {
@@ -163,22 +168,19 @@ public class QuestMgr : MonoBehaviour
             ShowQuest?.Invoke(currentQuest);
         }
 
-        if (currentQuest == quest.CloseInventory && completedQuest == quest.CloseInventory)
-        {
-            OverrideCurrentQuest(quest.None);
-            UIMGR.instance.CloseAllMenus();
-            WelcomeTxt.instance.ShowTitle("- TUTORIAL COMPLETED-");
-            print("tutorial completed");
-            tutorialInProgress = false;
-        }
-        else if (completedQuest == quest.CloseShop ||
-            completedQuest == quest.CloseInventory ||
-            completedQuest == quest.UseSprinkler ||
-            completedQuest == quest.SellCrop)
+        if (completedQuest == quest.CloseShop ||
+            completedQuest == quest.BuyTutorialUpgrade ||
+            completedQuest == quest.SellCrop ||
+            completedQuest == quest.PlaceTorch)
         {
             QuestCompleted?.Invoke();
             ShowQuest?.Invoke(quest.QuestCompleted);
             yield return new WaitForSeconds(1.2f);
+            if (completedQuest == quest.BuyTutorialUpgrade)
+            {
+                tutorialInProgress = false;
+                UIMGR.instance.CloseAllMenus();
+            }
             ShowQuest?.Invoke(currentQuest);
         }
     }
@@ -209,6 +211,8 @@ public enum quest
     ClickAnySeed,
     Merge,
     CloseInventory,
+    GoToUpgradesPoint,
+    BuyTutorialUpgrade,
     None,
     OpenBuildMode,
     PlaceTorch,
@@ -216,7 +220,7 @@ public enum quest
     CutDownTrees,
     PickupCactusSeed,
     QuestCompleted,
-    SelectBlowTool, // todo
-    BlowOffSlimes, // todo
-    PickupGoo, // todo
+    SelectBlowTool,
+    BlowOffSlimes,
+    PickupGoo,
 }

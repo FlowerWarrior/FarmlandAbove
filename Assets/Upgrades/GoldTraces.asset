@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Gold Traces
   desc: Infuses soil with gold, crops are worth more.
-  cost: 150
+  cost: 45
   id: 0
   isBought: 0
