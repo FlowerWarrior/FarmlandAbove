@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: RichSoil
   m_EditorClassIdentifier: 
   name: Rich Soil
-  desc: Plants grow faster.
+  desc: Special type of dirt, makes plants grow faster.
   cost: 250
   id: 1
   isBought: 0

@@ -380,7 +380,12 @@ public class GrowSlot : I_Interactable
             }
             else if (!isGoo)
             {
-                airBoostLvl -= airBoostUsageSpeed * Time.deltaTime;
+                float usageMultiplier = 1f;
+                if (myHabitat.boughtUpgrades[4] == true)
+                {
+                    usageMultiplier = 0.5f;
+                }
+                airBoostLvl -= airBoostUsageSpeed * usageMultiplier * Time.deltaTime;
             }
         }
 

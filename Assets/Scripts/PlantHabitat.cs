@@ -8,7 +8,7 @@ public class PlantHabitat : MonoBehaviour
     [SerializeField] internal SeedData[] acceptableSeeds;
     [SerializeField] internal GameObject[] upgradeMeshes;
 
-    internal bool[] boughtUpgrades = { false, false, false, false };
+    internal bool[] boughtUpgrades = { false, false, false, false, false };
 
     bool isShieldActive = false;
     bool wasShieldBought = false;

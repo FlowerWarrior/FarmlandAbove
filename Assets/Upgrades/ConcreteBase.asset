@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: ConcreteBase
   m_EditorClassIdentifier: 
   name: Concrete Base
-  desc: Lose water slower.
+  desc: Water disappears at slower rate.
   cost: 200
   id: 2
   isBought: 0

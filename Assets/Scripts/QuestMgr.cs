@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class QuestMgr : MonoBehaviour
 {
+    [SerializeField] bool showTutorial = true;
+
     internal static System.Action<quest> ShowQuest;
     internal static System.Action QuestCompleted;
 
@@ -21,8 +23,15 @@ public class QuestMgr : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        WelcomeTxt.instance.ShowTitle("- TUTORIAL-");
-        StartCoroutine(StartTutorialAfter(2));
+        if (showTutorial)
+        {
+            WelcomeTxt.instance.ShowTitle("- TUTORIAL-");
+            StartCoroutine(StartTutorialAfter(2));
+        }
+        else
+        {
+            OverrideCurrentQuest(quest.None);
+        }
     }
 
     IEnumerator StartTutorialAfter(float sec)
