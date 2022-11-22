@@ -56,7 +56,7 @@ public class Tree : MonoBehaviour
         transform.localScale = Vector3.zero;
         ToggleActive(true);
 
-        while (!(transform.localScale.x > defaultScale.x-0.05f && transform.localScale.x < defaultScale.x + 0.05f))
+        while (!(transform.localScale.x > defaultScale.x-0.01f && transform.localScale.x < defaultScale.x + 0.01f))
         {
             transform.localScale += Vector3.one * Time.deltaTime * 1.7f;
             yield return new WaitForEndOfFrame();
