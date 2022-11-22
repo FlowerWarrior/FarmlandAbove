@@ -28,9 +28,12 @@ public class SeedButtonNew : MonoBehaviour
     public void OnClicked()
     {
         if (seed.itemName != "Beetroot" && QuestMgr.instance.currentQuest <= quest.None)
-        {
             return;
-        }
+        if (QuestMgr.instance.currentQuest > quest.BuySeed2 && QuestMgr.instance.currentQuest < quest.AgainBuySeed0)
+            return;
+        if (QuestMgr.instance.currentQuest > quest.AgainBuySeed2 && QuestMgr.instance.currentQuest < quest.None)
+            return;
+
         if (InventorySystem.instance.GetCoins() >= seed.cost)
         {
             UIMGR.instance.OpenReceivedSeedMenu(seed);

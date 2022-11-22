@@ -8,7 +8,6 @@ public class DaytimeUIMgr : MonoBehaviour
     [SerializeField] GameObject imgSun;
     [SerializeField] GameObject imgMoon;
 
-    [SerializeField] Transform sunLight;
     [SerializeField] TextMeshProUGUI textTimeOfDay;
 
     // Start is called before the first frame update
@@ -21,15 +20,16 @@ public class DaytimeUIMgr : MonoBehaviour
     void Update()
     {
         int hour = (int)DayNightMgr.instance.GetCurrentHour();
-        if (hour < 12)
+        textTimeOfDay.text = $"{hour}:00 AM";
+        /*if (hour <= 12)
         {
             textTimeOfDay.text = $"{hour}:00 AM";
         }
-        else if (hour >= 12)
+        else if (hour > 12)
         {
             textTimeOfDay.text = $"{hour-12}:00 PM";
             
-        }
+        }*/
 
         if (hour >= 6 && hour < 18)
         {

@@ -43,6 +43,9 @@ public class QuestUIArrow : MonoBehaviour
             case quest.SelectBlowTool:
                 pos = pos_blowTool;
                 break;
+            case quest.SelectSprinkler:
+                pos = pos_blowTool;
+                break;
             case quest.BuyTutorialUpgrade:
                 pos = pos_Upgrade;
                 break;

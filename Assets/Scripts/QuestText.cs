@@ -39,6 +39,9 @@ public class QuestText : MonoBehaviour
             case quest.CloseShop:
                 newText = "Exit the shop";
                 break;
+            case quest.CloseShop2:
+                newText = "Exit the shop";
+                break;
             case quest.OpenInventory:
                 newText = "Press 'Q' to open inventory";
                 break;
@@ -69,8 +72,11 @@ public class QuestText : MonoBehaviour
             case quest.Water:
                 newText = "Water the plant (LMB)";
                 break;
+            case quest.SelectSprinkler:
+                newText = "Select tool 3";
+                break;
             case quest.UseSprinkler:
-                newText = "Use air blower (tool 3) and hit targets";
+                newText = "Blow air (LMB), hit targets and fully charge O2 bar";
                 break;
             case quest.PlantSeed2:
                 newText = "Plant other seeds (0/2)";

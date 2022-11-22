@@ -17,6 +17,7 @@ public class SlotsInteractor : MonoBehaviour
     [SerializeField] RectTransform panelPickupSeed_RT;
     [SerializeField] RectTransform panelCutGrass_RT;
     [SerializeField] RectTransform panelTorch_RT;
+    [SerializeField] RectTransform panelLightCampfire_RT;
     internal RectTransform currentPanel = null;
 
     [SerializeField] Vector3 offset;
@@ -106,6 +107,7 @@ public class SlotsInteractor : MonoBehaviour
         panelPickupSeed_RT.gameObject.SetActive(false);
         panelCutGrass_RT.gameObject.SetActive(false);
         panelTorch_RT.gameObject.SetActive(false);
+        panelLightCampfire_RT.gameObject.SetActive(false);
 
         if (currentPanel != null)
         {
@@ -192,7 +194,7 @@ public class SlotsInteractor : MonoBehaviour
                             {
                                 currentPanel = null;
                                 break;
-                            }     
+                            }
 
                             if (InventorySystem.instance.GetGooCount() > 0 && !growSlotInstance.isGoo)
                             {
@@ -223,7 +225,10 @@ public class SlotsInteractor : MonoBehaviour
 
                         case (GrowSlot.PlantState.ReadyForHarvest):
                             if (QuestMgr.instance.currentQuest < quest.CollectCrop)
+                            {
+                                currentPanel = null;
                                 break;
+                            }
 
                             currentPanel = panelHarvest_RT;
                             if (InteractMenuAction)
@@ -339,6 +344,24 @@ public class SlotsInteractor : MonoBehaviour
                     currentPanel = panelTorch_RT;
                     Torch torch = (Torch)closestSlot;
                     panelTorch_RT.GetComponent<InteractTorchUI>().UpdateTime(torch.lifespan);
+                    break;
+
+                // Campfire point
+                case interactablePoint.Campfire:
+                    CampfirePoint campfire = (CampfirePoint)closestSlot;
+                    if (campfire.isFireLit)
+                    {
+                        currentPanel = null;
+                    }
+                    else
+                    {
+                        currentPanel = panelLightCampfire_RT;
+                        if (InteractMenuAction)
+                        {
+                            campfire.LightUpCampfire();
+                        }
+                    }
+                        
                     break;
             }
         }

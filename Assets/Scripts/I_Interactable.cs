@@ -34,5 +34,6 @@ enum interactablePoint
     WaterRefill,
     Feces,
     Seed,
-    Torch
+    Torch,
+    Campfire
 }

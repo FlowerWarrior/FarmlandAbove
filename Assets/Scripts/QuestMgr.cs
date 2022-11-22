@@ -45,7 +45,7 @@ public class QuestMgr : MonoBehaviour
     {
         SeedReceivedNew.Bought += () => { IncrementBuySeed(); };
 
-        UIMGR.PlayerClosedAllMenus += () => { SetQuestCompleted(quest.CloseShop); SetQuestCompleted(quest.CloseInventory);
+        UIMGR.PlayerClosedAllMenus += () => { SetQuestCompleted(quest.CloseShop); SetQuestCompleted(quest.CloseShop2); SetQuestCompleted(quest.CloseInventory);
             if (currentQuest == quest.ClickAnySeed
             || currentQuest == quest.Merge) { OverrideCurrentQuest(quest.OpenInventory); } };
 
@@ -114,6 +114,11 @@ public class QuestMgr : MonoBehaviour
                 SetQuestCompleted(quest.SelectBlowTool);
             else if (currentQuest == quest.BlowOffSlimes && a != 2)
                 OverrideCurrentQuest(quest.SelectBlowTool);
+
+            if (currentQuest == quest.SelectSprinkler && a == 2)
+                SetQuestCompleted(quest.SelectSprinkler);
+            else if (currentQuest == quest.UseSprinkler && a != 2)
+                OverrideCurrentQuest(quest.SelectSprinkler);
         };
 
         Slime.SlimeFellOffToVoid += () => { SetQuestCompleted(quest.BlowOffSlimes); };
@@ -197,6 +202,7 @@ public enum quest
     RefillWaterTool,
     SelectWaterTool,
     Water,
+    SelectSprinkler,
     UseSprinkler,
     PlantSeed2,
     PlantSeed3,
@@ -207,6 +213,7 @@ public enum quest
     AgainBuySeed0,
     AgainBuySeed1,
     AgainBuySeed2,
+    CloseShop2,
     OpenInventory,
     ClickAnySeed,
     Merge,

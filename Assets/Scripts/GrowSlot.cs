@@ -347,6 +347,13 @@ public class GrowSlot : I_Interactable
 
         ToggleBushyGrass(false);
         bushyGrassTimeDelay = Random.Range(10f, 200f);
+
+        if (currentVegetable != null)
+        {
+            VegetableData initnialVeggie = currentVegetable;
+            ResetGrowSlot();
+            PlantSeed(initnialVeggie.seedClass, 30);
+        }
     }
 
     private void OnEnable()

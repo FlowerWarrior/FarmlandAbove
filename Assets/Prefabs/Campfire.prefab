@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1481898017}
   - component: {fileID: 1481898019}
   - component: {fileID: 1481898018}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: Fire Particles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4825,7 +4825,9 @@ GameObject:
   - component: {fileID: 7784864245631556097}
   - component: {fileID: 8919644494259848835}
   - component: {fileID: 5471191304510828234}
-  m_Layer: 0
+  - component: {fileID: 6779114621723618936}
+  - component: {fileID: 2126936731696182649}
+  m_Layer: 14
   m_Name: Campfire
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5011,6 +5013,34 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &6779114621723618936
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8577554886297500628}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 684fe69862b0e7f48900d2150eb4d3bd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fireAudioSource: {fileID: 5471191304510828234}
+  fireLight: {fileID: 8919644495199513537}
+  fireParticles: {fileID: 1481898019}
+--- !u!135 &2126936731696182649
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8577554886297500628}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 1.23
+  m_Center: {x: -0.025611503, y: 0.048760958, z: 0.25868475}
 --- !u!1 &8919644495199513540
 GameObject:
   m_ObjectHideFlags: 0
@@ -5022,7 +5052,7 @@ GameObject:
   - component: {fileID: 8919644495199513539}
   - component: {fileID: 8919644495199513537}
   - component: {fileID: 8919644495199513538}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: Point Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}

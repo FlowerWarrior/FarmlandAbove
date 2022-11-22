@@ -28,7 +28,8 @@ public class DayNightMgr : MonoBehaviour
 
     public float GetCurrentHour()
     {
-        return ((float)_currentTicks / (float)_ticksIn24H) * 24f;
+        int hourOffset = 1;
+        return (((float)_currentTicks / (float)_ticksIn24H) * 24f + hourOffset) % 24;
     }
 
     private void RotateAboutTicks(int ticks)
