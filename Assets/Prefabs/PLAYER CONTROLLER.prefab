@@ -10527,6 +10527,9 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 8
+  placeTargetLayer:
+    serializedVersion: 2
+    m_Bits: 65536
   rayDistance: 11
   ghostTorchPrefab: {fileID: 6104649184413249779, guid: 7258e024b0c20ac488fab75a0d5b314d,
     type: 3}

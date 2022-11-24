@@ -13,6 +13,7 @@ public class DayNightMgr : MonoBehaviour
 
     internal static System.Action EnteredFirstNight;
     [HideInInspector] internal bool didEnterFirstNight = false;
+    bool didEnterThisNight = false;
 
     public static DayNightMgr instance;
 
@@ -57,6 +58,8 @@ public class DayNightMgr : MonoBehaviour
             {
                 sunLight.color = Color.Lerp(_sunAboveColor, _sunsetColor, (newRot.x-90f)/90f);
             }
+            if (didEnterThisNight)
+                didEnterThisNight = false;
         }
         // Night Colors
         else
@@ -67,6 +70,11 @@ public class DayNightMgr : MonoBehaviour
                 if (!didEnterFirstNight && newRot.x > 200)
                 {
                     EnteredFirstNight?.Invoke();
+                }
+                if (!didEnterThisNight && newRot.x > 200)
+                {
+                    TorchesMgr.instance.ReshufflePlaceTargets();
+                    didEnterThisNight = true;
                 }
             }
             if (newRot.x > 270 && newRot.x < 360) // Noon -> Sunset

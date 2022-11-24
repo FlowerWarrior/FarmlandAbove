@@ -6,6 +6,7 @@ public class BuildMode : MonoBehaviour
 {
     [SerializeField] LayerMask obstaclesLayer;
     [SerializeField] LayerMask groundLayer;
+    [SerializeField] LayerMask placeTargetLayer;
     [SerializeField] float rayDistance;
     [SerializeField] GameObject ghostTorchPrefab;
     [SerializeField] GameObject realTorchPrefab;
@@ -23,6 +24,7 @@ public class BuildMode : MonoBehaviour
         heldTorch = Instantiate(ghostTorchPrefab, TorchesMgr.instance._ghostHolder).transform;
         heldTorch.gameObject.SetActive(false);
         UIMGR.instance.EnterBuildModeUI();
+        TorchesMgr.instance.TogglePlaceTargetsVisiblity(true);
     }
 
     void ExitBuildMode()
@@ -32,6 +34,7 @@ public class BuildMode : MonoBehaviour
             Destroy(heldTorch.gameObject);
         }
         UIMGR.instance.ExitBuildModeUI();
+        TorchesMgr.instance.TogglePlaceTargetsVisiblity(false);
     }
 
     // Update is called once per frame
@@ -64,9 +67,10 @@ public class BuildMode : MonoBehaviour
         if (heldTorch == null)
             return;
 
-        RaycastHit groundHit;
+        RaycastHit groundHit, placeTargetHit;
         bool hitObstacle = false;
         bool hitGround = false;
+        bool hitPlaceTarget = false;
         if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out groundHit, rayDistance, groundLayer))
         {
             hitGround = true;
@@ -74,6 +78,10 @@ public class BuildMode : MonoBehaviour
         if (Physics.CheckCapsule(groundHit.point, groundHit.point + Vector3.up * 1.5f, 0.3f, obstaclesLayer))
         {
             hitObstacle = true;
+        }
+        if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out placeTargetHit, rayDistance, placeTargetLayer))
+        {
+            hitPlaceTarget = true;
         }
         if (hitGround)
         {
@@ -84,7 +92,7 @@ public class BuildMode : MonoBehaviour
             MeshRenderer meshRend = heldTorch.GetChild(0).gameObject.GetComponent<MeshRenderer>();
 
             int currentIsland = PlayerRespawner.instance.currentIsland;
-            if (hitObstacle || !TorchesMgr.instance.CanPlaceOnIsland(currentIsland))
+            if (hitObstacle || !TorchesMgr.instance.CanPlaceOnIsland(currentIsland) || !hitPlaceTarget)
             {
                 Material[] newMats = new Material[meshRend.materials.Length];
                 for (int i = 0; i < meshRend.materials.Length; i++)
@@ -114,6 +122,7 @@ public class BuildMode : MonoBehaviour
                     Instantiate(realTorchPrefab, heldTorch.position, heldTorch.rotation, TorchesMgr.instance._realTorchHolders[currentIsland]);
                     ExitBuildMode();
                     PlacedTorch?.Invoke();
+                    placeTargetHit.collider.transform.parent.gameObject.SetActive(false);
                 }
             }
         }
