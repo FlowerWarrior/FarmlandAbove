@@ -31,7 +31,7 @@ public class DaytimeUIMgr : MonoBehaviour
             
         }*/
 
-        if (hour >= 6 && hour < 18)
+        if (hour >= 7 && hour < 19)
         {
             imgSun.SetActive(true);
             imgMoon.SetActive(false);

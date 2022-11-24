@@ -71,7 +71,7 @@ public class DayNightMgr : MonoBehaviour
                 {
                     EnteredFirstNight?.Invoke();
                 }
-                if (!didEnterThisNight && newRot.x > 200)
+                if (!didEnterThisNight && newRot.x > 184)
                 {
                     TorchesMgr.instance.ReshufflePlaceTargets();
                     didEnterThisNight = true;
