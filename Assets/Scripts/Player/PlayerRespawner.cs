@@ -6,8 +6,9 @@ public class PlayerRespawner : MonoBehaviour
 {
     [SerializeField] GameObject playerPrefab;
     [SerializeField] Transform[] respawnPoints;
-    [SerializeField] float yLimit;
-    [SerializeField] float respawnDelay; 
+    [SerializeField] float yLimit = -80f;
+    [SerializeField] float respawnDelay = 0.85f;
+    [SerializeField] float mapBoundSize = 600f;
     internal Rigidbody rb;
 
     internal GameObject playerInstance;
@@ -57,7 +58,16 @@ public class PlayerRespawner : MonoBehaviour
         if (rb == null)
             return;
 
-        if (rb.transform.position.y < yLimit)
+        Vector3 rbPos = rb.transform.position;
+
+        if (rbPos.y < yLimit)
+        {
+            DestroyPlayersInScene();
+            PlayerFellBelow?.Invoke();
+            StartCoroutine(RespawnPlayerAfter(respawnDelay));
+        }
+
+        if (Mathf.Abs(rbPos.x) > mapBoundSize || Mathf.Abs(rbPos.z) > mapBoundSize)
         {
             DestroyPlayersInScene();
             PlayerFellBelow?.Invoke();

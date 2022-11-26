@@ -5967,6 +5967,7 @@ MonoBehaviour:
   - {fileID: 1776328782}
   yLimit: -80
   respawnDelay: 0.85
+  mapBoundSize: 600
 --- !u!1001 &202471023
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -53013,12 +53014,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 89880302}
     m_Modifications:
-    - target: {fileID: 1279447063597919219, guid: 32ccc2ee4c2e84b48bc9db72232a6d9a,
-        type: 3}
-      propertyPath: currentVegetable
-      value: 
-      objectReference: {fileID: 11400000, guid: a9bb3559bef7a0c4890ad37926f0d47a,
-        type: 2}
     - target: {fileID: 3712101053862714898, guid: 32ccc2ee4c2e84b48bc9db72232a6d9a,
         type: 3}
       propertyPath: m_Name
@@ -53079,12 +53074,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4559157865528372040, guid: 32ccc2ee4c2e84b48bc9db72232a6d9a,
-        type: 3}
-      propertyPath: currentVegetable
-      value: 
-      objectReference: {fileID: 11400000, guid: 72817a49fb42c8e42a9ba980f26048fd,
-        type: 2}
     - target: {fileID: 6522685043439837601, guid: 32ccc2ee4c2e84b48bc9db72232a6d9a,
         type: 3}
       propertyPath: m_AnchorMax.x
@@ -53095,12 +53084,6 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8186456865342567247, guid: 32ccc2ee4c2e84b48bc9db72232a6d9a,
-        type: 3}
-      propertyPath: currentVegetable
-      value: 
-      objectReference: {fileID: 11400000, guid: 38753a730e91cf04e902eec347d5e090,
-        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 32ccc2ee4c2e84b48bc9db72232a6d9a, type: 3}
 --- !u!4 &4559157864741807936 stripped
