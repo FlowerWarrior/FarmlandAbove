@@ -18,6 +18,8 @@ public class BuildMode : MonoBehaviour
 
     internal static System.Action PlacedTorch;
     internal static System.Action CantPlace;
+    internal static System.Action EnteredBuildMode;
+    internal static System.Action ExitedBuildMode;
 
     void EnterBuildMode()
     {
@@ -25,6 +27,7 @@ public class BuildMode : MonoBehaviour
         heldTorch.gameObject.SetActive(false);
         UIMGR.instance.EnterBuildModeUI();
         TorchesMgr.instance.TogglePlaceTargetsVisiblity(true);
+        EnteredBuildMode?.Invoke();
     }
 
     void ExitBuildMode()
@@ -35,6 +38,7 @@ public class BuildMode : MonoBehaviour
         }
         UIMGR.instance.ExitBuildModeUI();
         TorchesMgr.instance.TogglePlaceTargetsVisiblity(false);
+        ExitedBuildMode?.Invoke();
     }
 
     // Update is called once per frame
@@ -120,8 +124,8 @@ public class BuildMode : MonoBehaviour
                 {
                     // build
                     Instantiate(realTorchPrefab, heldTorch.position, heldTorch.rotation, TorchesMgr.instance._realTorchHolders[currentIsland]);
-                    ExitBuildMode();
                     PlacedTorch?.Invoke();
+                    ExitBuildMode();
                     placeTargetHit.collider.transform.parent.gameObject.SetActive(false);
                 }
             }

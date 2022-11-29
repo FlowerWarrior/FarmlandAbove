@@ -49,8 +49,8 @@ public class QuestMgr : MonoBehaviour
             if (currentQuest == quest.ClickAnySeed
             || currentQuest == quest.Merge) { OverrideCurrentQuest(quest.OpenInventory); } };
 
-        UIMGR.PlayerClosedMerger += () => { if (currentQuest == quest.Merge) 
-                                            OverrideCurrentQuest(quest.ClickAnySeed); };
+        UIMGR.PlayerClosedMerger += () => { if (currentQuest == quest.Merge)
+                OverrideCurrentQuest(quest.ClickAnySeed); };
 
         InventoryUI.Opened += () => { SetQuestCompleted(quest.OpenInventory); };
 
@@ -72,10 +72,10 @@ public class QuestMgr : MonoBehaviour
         GrowSlot.PlantReady += (GrowSlot a, Vector3 b, int c) => { SetQuestCompleted(quest.UseSprinkler); };
 
         GrowSlot.PlantHarvested += (VegetableData a, SeedData b) => { SetQuestCompleted(quest.CollectCrop3); SetQuestCompleted(quest.CollectCrop2); SetQuestCompleted(quest.CollectCrop); };
-        
+
         InventorySystem.ItemSold += () => { SetQuestCompleted(quest.SellCrop); };
 
-        ZoneTrigger.DiscoveredIsland += (int id) => { if (id == 1) { 
+        ZoneTrigger.DiscoveredIsland += (int id) => { if (id == 1) {
                 if (currentTool == 1)
                 {
                     OverrideCurrentQuest(quest.CutDownTrees); tutorialInProgress = true;
@@ -97,6 +97,17 @@ public class QuestMgr : MonoBehaviour
         UpgradeButton.BoughtUpgrade += () => { SetQuestCompleted(quest.BuyTutorialUpgrade); };
 
         SeedCollectable.SeedPickedUp += (int id) => { if (id == 0) SetQuestCompleted(quest.PickupCactusSeed); };
+
+        BuildMode.EnteredBuildMode += () => { SetQuestCompleted(quest.OpenBuildMode); };
+
+        /*
+        BuildMode.ExitedBuildMode += () => {
+            if (currentQuest == quest.PlaceTorch)
+            {
+                OverrideCurrentQuest(quest.OpenBuildMode);
+            } };*/
+
+        BuildMode.PlacedTorch += () => { if (currentQuest == quest.PlaceTorch || currentQuest == quest.OpenBuildMode) SetQuestCompleted(quest.PlaceTorch); };
 
         ToolsUseManager.ToolSelected += (int a) => {
             currentTool = a;
@@ -160,6 +171,11 @@ public class QuestMgr : MonoBehaviour
             OverrideCurrentQuest(quest.None);
             tutorialInProgress = false;
             //WelcomeTxt.instance.ShowTitle("- TUTORIAL 2 COMPLETED-");
+        }
+        else if (currentQuest == completedQuest && completedQuest == quest.PlaceTorch)
+        {
+            OverrideCurrentQuest(quest.None);
+            tutorialInProgress = false;
         }
         else if (currentQuest == completedQuest)
         {
