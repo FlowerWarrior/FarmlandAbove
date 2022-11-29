@@ -107,7 +107,7 @@ public class QuestMgr : MonoBehaviour
                 OverrideCurrentQuest(quest.OpenBuildMode);
             } };*/
 
-        BuildMode.PlacedTorch += () => { if (currentQuest == quest.PlaceTorch || currentQuest == quest.OpenBuildMode) SetQuestCompleted(quest.PlaceTorch); };
+        BuildMode.PlacedTorch += () => { SetQuestCompleted(quest.PlaceTorch);};
 
         ToolsUseManager.ToolSelected += (int a) => {
             currentTool = a;
@@ -174,7 +174,11 @@ public class QuestMgr : MonoBehaviour
         }
         else if (currentQuest == completedQuest && completedQuest == quest.PlaceTorch)
         {
+            QuestCompleted?.Invoke();
             OverrideCurrentQuest(quest.None);
+            ShowQuest?.Invoke(quest.QuestCompleted);
+            yield return new WaitForSeconds(1.2f);
+            ShowQuest?.Invoke(currentQuest);
             tutorialInProgress = false;
         }
         else if (currentQuest == completedQuest)
@@ -191,8 +195,7 @@ public class QuestMgr : MonoBehaviour
 
         if (completedQuest == quest.CloseShop ||
             completedQuest == quest.BuyTutorialUpgrade ||
-            completedQuest == quest.SellCrop ||
-            completedQuest == quest.PlaceTorch)
+            completedQuest == quest.SellCrop)
         {
             QuestCompleted?.Invoke();
             ShowQuest?.Invoke(quest.QuestCompleted);

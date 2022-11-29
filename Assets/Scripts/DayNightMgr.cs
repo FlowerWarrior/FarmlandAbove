@@ -70,6 +70,7 @@ public class DayNightMgr : MonoBehaviour
                 if (!didEnterFirstNight && newRot.x > 200)
                 {
                     EnteredFirstNight?.Invoke();
+                    didEnterFirstNight = true;
                 }
                 if (!didEnterThisNight && newRot.x > 184)
                 {

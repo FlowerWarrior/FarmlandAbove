@@ -106,7 +106,7 @@ public class QuestText : MonoBehaviour
                 newText = "Press 'T' to enter torch mode";
                 break;
             case quest.PlaceTorch:
-                newText = "Place torch near the plants to provide them with light";
+                newText = "Place torch in any highlighted area";
                 break;
             case quest.GoToUpgradesPoint:
                 newText = "Use upgrades point";
