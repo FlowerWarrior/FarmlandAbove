@@ -167,10 +167,25 @@ public class QuestMgr : MonoBehaviour
         if (!tutorialInProgress) yield break;
 
         else if (currentQuest == completedQuest && completedQuest == quest.PickupCactusSeed)
-        { 
+        {
+            QuestCompleted?.Invoke();
             OverrideCurrentQuest(quest.None);
+            ShowQuest?.Invoke(quest.QuestCompleted);
+            yield return new WaitForSeconds(1.2f);
+            ShowQuest?.Invoke(currentQuest);
             tutorialInProgress = false;
-            //WelcomeTxt.instance.ShowTitle("- TUTORIAL 2 COMPLETED-");
+        }
+        else if (currentQuest == quest.BlowOffSlimes || currentQuest == quest.SelectBlowTool)
+        {
+            if (completedQuest == quest.BlowOffSlimes)
+            {
+                QuestCompleted?.Invoke();
+                OverrideCurrentQuest(quest.None);
+                ShowQuest?.Invoke(quest.QuestCompleted);
+                yield return new WaitForSeconds(1.2f);
+                ShowQuest?.Invoke(currentQuest);
+                tutorialInProgress = false;
+            }
         }
         else if (currentQuest == completedQuest && completedQuest == quest.PlaceTorch)
         {

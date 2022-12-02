@@ -56,10 +56,16 @@ public class Tree : MonoBehaviour
         transform.localScale = Vector3.zero;
         ToggleActive(true);
 
-        while (!(transform.localScale.x > defaultScale.x-0.01f && transform.localScale.x < defaultScale.x + 0.01f))
+        float falloff = 0.6f;
+        float speed = 2.2f;
+
+        float timer = 0f;
+        while (timer <= 1f)
         {
-            transform.localScale += Vector3.one * Time.deltaTime * 1.7f;
+            float val = -Mathf.Pow(1-Mathf.Pow(timer, falloff), 1/falloff) + 1;
+            transform.localScale = Vector3.Lerp(Vector3.zero, defaultScale, val);
             yield return new WaitForEndOfFrame();
+            timer += Time.deltaTime * speed;
         }
     } 
 }

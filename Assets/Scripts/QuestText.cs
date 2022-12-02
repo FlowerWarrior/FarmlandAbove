@@ -75,6 +75,12 @@ public class QuestText : MonoBehaviour
             case quest.SelectSprinkler:
                 newText = "Select tool 3";
                 break;
+            case quest.SelectBlowTool:
+                newText = "Select tool 3";
+                break;
+            case quest.BlowOffSlimes:
+                newText = "Throw slimes off the island";
+                break;
             case quest.UseSprinkler:
                 newText = "Blow air (LMB), hit targets and fully charge O2 bar";
                 break;

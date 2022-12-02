@@ -150,10 +150,16 @@ public class Slime : MonoBehaviour
 
         if (PlayerRespawner.instance.rb != null)
         {
-            if (Vector3.Distance(PlayerRespawner.instance.rb.transform.position, transform.position) > 300)
+            if (Vector3.Distance(PlayerRespawner.instance.rb.transform.position, transform.position) > 1000)
             {
                 Destroy(gameObject);
             }
+        }
+
+        if (rb.transform.position.y < -110f)
+        {
+            SlimeFellOffToVoid?.Invoke();
+            Destroy(gameObject);
         }
     }
 }
