@@ -57,6 +57,7 @@ public class AudioMgr : MonoBehaviour
     [SerializeField] AudioClip grassSpawned;
     [SerializeField] AudioClip placedTorch;
     [SerializeField] AudioClip cantPlace;
+    [SerializeField] AudioClip slimeHitWithAxe;
 
     float slimeHitDelay = 0.3f;
     float slimeHitTimer = 0f;
@@ -159,6 +160,7 @@ public class AudioMgr : MonoBehaviour
         GrowSlot.GrassSpawned += PlayGrassSpawned;
         BuildMode.PlacedTorch += PlayPlacedTorch;
         BuildMode.CantPlace += PlayCantPlace;
+        ToolsUseManager.HitSlimeWithAxe += PlaySlimeHitWithAxe;
     }
 
     private void PlayAudioAtPoint(AudioClip clip, Vector3 location)
@@ -376,5 +378,10 @@ public class AudioMgr : MonoBehaviour
     private void PlayCantPlace()
     {
         PlayAudioEffect(cantPlace);
+    }
+
+    private void PlaySlimeHitWithAxe()
+    {
+        PlayAudioEffect(slimeHitWithAxe);
     }
 }

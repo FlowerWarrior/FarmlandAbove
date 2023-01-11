@@ -27,6 +27,7 @@ public class ToolsUseManager : MonoBehaviour
     public static System.Action<float> UsingWaterToolTick;
     public static System.Action<Vector3> AxeHit;
     public static System.Action AxeUsed;
+    public static System.Action HitSlimeWithAxe;
     internal static System.Action<int> ToolSelected;
     bool axeCanHit = false;
 
@@ -258,6 +259,7 @@ public class ToolsUseManager : MonoBehaviour
             Vector3 forceVector = Camera.main.transform.forward * power;
             forceVector.y /= 5f;
             hit.collider.gameObject.GetComponent<Rigidbody>().AddForce(forceVector, ForceMode.Impulse);
+            HitSlimeWithAxe?.Invoke();
         }
     }
 
